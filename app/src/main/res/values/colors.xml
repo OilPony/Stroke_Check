@@ -3,7 +3,8 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="colorText">#FFFFFF</color>
+    <color name="colorText">#000000</color>
     <color name="colorTextHint">#51d8c7</color>
+    <color name="Pink_faminkgo">#ff5c62</color>
 
 </resources>

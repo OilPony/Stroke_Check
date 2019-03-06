@@ -18,4 +18,7 @@
     <string name="error_valid_email_password">Wrong Email or Password</string>
     <string name="text_member">Already a member? Login</string>
     <string name="logout">Logout</string>
+    <string name="take_picture">Take picture</string>
+    <string name="action_settings">Settings</string>
+
 </resources>

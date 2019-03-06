@@ -2,7 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.test_php2">
 
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <uses-feature android:name="android.hardware.camera2.full" />
 
     <application
         android:allowBackup="true"
@@ -24,11 +30,21 @@
         <activity android:name=".UsersActivity"
             android:screenOrientation="portrait" />
 
-        <activity android:name=".ForgotPassword"
+        <activity android:name=".record"
             android:screenOrientation="portrait" />
 
-        <activity android:name=".ConfirmPassword"
+        <activity android:name=".arm"
             android:screenOrientation="portrait" />
+
+        <activity android:name=".smile"
+            android:screenOrientation="portrait" />
+
+        <activity android:name=".show_pic_arm"
+            android:screenOrientation="portrait" />
+
+        <activity android:name=".show_pic_smile"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

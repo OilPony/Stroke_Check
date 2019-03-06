@@ -23,7 +23,7 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
 
     private NestedScrollView nestedScrollView;
 
-    private TextInputLayout textInputLayoutEmail;
+    private TextInputLayout textInputLayoutName;
     private TextInputLayout textInputLayoutPassword;
 
     private TextInputEditText textInputEditTextEmail;
@@ -32,7 +32,6 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
     private AppCompatButton appCompatButtonLogin;
 
     private AppCompatTextView textViewLinkRegister;
-    private AppCompatTextView textViewLinkForgotPassword;
 
     private InputValidation inputValidation;
     private DatabaseHelper databaseHelper;
@@ -50,7 +49,7 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
     private void initViews(){
         nestedScrollView = (NestedScrollView) findViewById(R.id.nestedScrollView);
 
-        textInputLayoutEmail = (TextInputLayout) findViewById(R.id.textInputLayoutEmail);
+        textInputLayoutName = (TextInputLayout) findViewById(R.id.textInputLayoutEmail);
         textInputLayoutPassword = (TextInputLayout) findViewById(R.id.textInputLayoutPassword);
 
         textInputEditTextEmail = (TextInputEditText) findViewById(R.id.textInputEditTextEmail);
@@ -59,10 +58,9 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
         appCompatButtonLogin = (AppCompatButton) findViewById(R.id.appCompatButtonLogin);
 
         textViewLinkRegister = (AppCompatTextView) findViewById(R.id.textViewLinkRegister);
-        textViewLinkForgotPassword = (AppCompatTextView) findViewById(R.id.forgotPassword);
         PreferenceUtils utils = new PreferenceUtils();
 
-        if (utils.getEmail(this) != null ){
+        if (utils.getName(this) != null ){
             Intent intent = new Intent(Main2Activity.this, UsersActivity.class);
             startActivity(intent);
         }else{
@@ -73,7 +71,6 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
     private void initListeners(){
         appCompatButtonLogin.setOnClickListener(this);
         textViewLinkRegister.setOnClickListener(this);
-        textViewLinkForgotPassword.setOnClickListener(this);
     }
 
     private void initObjects(){
@@ -91,28 +88,25 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
                 Intent intentRegister = new Intent(getApplicationContext(), RegisterActivity.class);
                 startActivity(intentRegister);
                 break;
-            case R.id.forgotPassword:
-                Intent intent = new Intent(getApplicationContext(), ForgotPassword.class);
-                startActivity(intent);
-                break;
+
         }
     }
 
     private void verifyFromSQLite(){
-        if (!inputValidation.isInputEditTextFilled(textInputEditTextEmail, textInputLayoutEmail, getString(R.string.error_message_email))) {
+        if (!inputValidation.isInputEditTextFilled(textInputEditTextEmail, textInputLayoutName, getString(R.string.error_message_email))) {
             return;
         }
-        if (!inputValidation.isInputEditTextEmail(textInputEditTextEmail, textInputLayoutEmail, getString(R.string.error_message_email))) {
-            return;
-        }
+//        if (!inputValidation.isInputEditTextEmail(textInputEditTextEmail, textInputLayoutEmail, getString(R.string.error_message_email))) {
+//            return;
+//        }
         if (!inputValidation.isInputEditTextFilled(textInputEditTextPassword, textInputLayoutPassword, getString(R.string.error_message_email))) {
             return;
         }
-        String email = textInputEditTextEmail.getText().toString().trim();
+        String name = textInputEditTextEmail.getText().toString().trim();
         String password = textInputEditTextPassword.getText().toString().trim();
 
-        if (databaseHelper.checkUser(email, password)) {
-            PreferenceUtils.saveEmail(email, this);
+        if (databaseHelper.checkUser(name, password)) {
+            PreferenceUtils.saveName(name, this);
             PreferenceUtils.savePassword(password, this);
             Intent accountsIntent = new Intent(activity, UsersActivity.class);
             accountsIntent.putExtra("EMAIL", textInputEditTextEmail.getText().toString().trim());

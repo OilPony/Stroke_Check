@@ -56,21 +56,21 @@ public class DatabaseHelper  extends SQLiteOpenHelper{
         db.close();
     }
 
-    public void updatePassword(String email, String password){
+    public void updatePassword(String name, String password){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_USER_PASSWORD, password);
-        db.update(TABLE_USER, values, COLUMN_USER_EMAIL+" = ?",new String[] { email });
+        db.update(TABLE_USER, values, COLUMN_USER_NAME+" = ?",new String[] { name });
         db.close();
     }
 
-    public boolean checkUser(String email){
+    public boolean checkUser(String name){
         String[] columns = {
                 COLUMN_USER_ID
         };
         SQLiteDatabase db = this.getWritableDatabase();
-        String selection = COLUMN_USER_EMAIL + " = ?";
-        String[] selectionArgs = { email };
+        String selection = COLUMN_USER_NAME + " = ?";
+        String[] selectionArgs = { name };
 
         Cursor cursor = db.query(TABLE_USER,
                 columns,
@@ -89,13 +89,13 @@ public class DatabaseHelper  extends SQLiteOpenHelper{
         return false;
     }
 
-    public boolean checkUser(String email, String password){
+    public boolean checkUser(String name, String password){
         String[] columns = {
                 COLUMN_USER_ID
         };
         SQLiteDatabase db = this.getWritableDatabase();
-        String selection = COLUMN_USER_EMAIL + " = ?" + " AND " + COLUMN_USER_PASSWORD + " =?";
-        String[] selectionArgs = { email, password };
+        String selection = COLUMN_USER_NAME + " = ?" + " AND " + COLUMN_USER_PASSWORD + " =?";
+        String[] selectionArgs = { name, password };
 
         Cursor cursor = db.query(TABLE_USER,
                 columns,
