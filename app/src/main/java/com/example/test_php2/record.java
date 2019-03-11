@@ -167,6 +167,7 @@ public class record extends AppCompatActivity implements View.OnClickListener{
                     }
                 });
     }
+
 //    public void process(){
 //        Ion.with(this)
 //                .load("http://38d5be06.ngrok.io/pro-android/upload/sound/test.php")

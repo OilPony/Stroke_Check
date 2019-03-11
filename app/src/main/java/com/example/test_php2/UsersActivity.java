@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.test_php2.R;
@@ -61,6 +62,15 @@ public class UsersActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(UsersActivity.this,record.class);
+                startActivity(i);
+            }
+        });
+
+        ImageView ques = findViewById(R.id.imageView7);
+        ques.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(UsersActivity.this,learn.class);
                 startActivity(i);
             }
         });

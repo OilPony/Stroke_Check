@@ -24,27 +24,28 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterActivity"
+        <activity
+            android:name=".RegisterActivity"
             android:screenOrientation="portrait" />
-
-        <activity android:name=".UsersActivity"
+        <activity
+            android:name=".UsersActivity"
             android:screenOrientation="portrait" />
-
-        <activity android:name=".record"
+        <activity
+            android:name=".record"
             android:screenOrientation="portrait" />
-
-        <activity android:name=".arm"
+        <activity
+            android:name=".arm"
             android:screenOrientation="portrait" />
-
-        <activity android:name=".smile"
+        <activity
+            android:name=".smile"
             android:screenOrientation="portrait" />
-
-        <activity android:name=".show_pic_arm"
+        <activity
+            android:name=".show_pic_arm"
             android:screenOrientation="portrait" />
-
-        <activity android:name=".show_pic_smile"
+        <activity
+            android:name=".show_pic_smile"
             android:screenOrientation="portrait" />
-
+        <activity android:name=".learn"></activity>
     </application>
 
 </manifest>
