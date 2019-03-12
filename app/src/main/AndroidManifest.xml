@@ -45,7 +45,8 @@
         <activity
             android:name=".show_pic_smile"
             android:screenOrientation="portrait" />
-        <activity android:name=".learn"></activity>
+        <activity android:name=".learn" />
+        <activity android:name=".StrokeActivity"></activity>
     </application>
 
 </manifest>

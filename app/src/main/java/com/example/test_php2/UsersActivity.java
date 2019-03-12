@@ -70,7 +70,7 @@ public class UsersActivity extends AppCompatActivity {
         ques.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(UsersActivity.this,learn.class);
+                Intent i = new Intent(UsersActivity.this,StrokeActivity.class);
                 startActivity(i);
             }
         });
