@@ -157,7 +157,7 @@ public class record extends AppCompatActivity implements View.OnClickListener{
         Date now = new Date();
         String path = Environment.getExternalStorageDirectory()+"/"+"record_"+formatter.format(now)+".wav";;
         Ion.with(this)
-                .load("http://389d7ab2.ngrok.io/pro-android/sound.php")
+                .load("http://69eb1511.ngrok.io/pro-android/sound.php")
                 .setMultipartFile("upload_file", new File(path))
                 .asString()
                 .setCallback(new FutureCallback<String>() {

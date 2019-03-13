@@ -60,13 +60,13 @@ public class show_pic_smile extends PermissionActivity {
         Date now = new Date();
         String path = (Environment.getExternalStorageDirectory()+"/"+"smile_"+formatter.format(now)+".jpg");
         Ion.with(this)
-                .load("http://389d7ab2.ngrok.io/pro-android/smile.php")
+                .load("http://69eb1511.ngrok.io/pro-android/smile.php")
                 .setMultipartFile("upload_file", new File(path))
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override
                     public void onCompleted(Exception e, String result) {
-
+                        process();
                     }
                 });
     }
@@ -92,6 +92,31 @@ public class show_pic_smile extends PermissionActivity {
         }
 
 
+    }
+
+        public void process(){
+        Ion.with(this)
+                .load("http://69eb1511.ngrok.io/pro-android/smile/test.php")
+                .asString()
+                .setCallback(new FutureCallback<String>() {
+                    @Override
+                    public void onCompleted(Exception e, String result) {
+                        //int dist = Integer.parseInt(result);
+                        /*if(dist >= 130) {
+                            //Toast.makeText(getBaseContext(), "Different", Toast.LENGTH_LONG).show();
+                            if(dist >= 135){
+                                Toast.makeText(getBaseContext(), "Different", Toast.LENGTH_LONG).show();
+                            }else {
+                                Toast.makeText(getBaseContext(), "Same", Toast.LENGTH_LONG).show();
+                            }
+                        }else {
+                            Toast.makeText(getBaseContext(), "Same", Toast.LENGTH_LONG).show();
+
+                        }*/
+                        Toast.makeText(getBaseContext(), result, Toast.LENGTH_LONG).show();
+
+                    }
+                });
     }
 
 
