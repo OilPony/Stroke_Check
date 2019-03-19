@@ -1,15 +1,17 @@
 package com.example.test_php2;
 
-public class Stroke {
+public class Smiles {
 
     private int id;
+    private String user;
     private double sm1;
 
-    public Stroke() {
+    public Smiles() {
     }
 
-    public Stroke(int id, double sm1, double sm2) {
+    public Smiles(int id, double sm1,String user, double sm2) {
         this.id = id;
+        this.user = user;
         this.sm1 = sm1;
     }
 
@@ -19,6 +21,13 @@ public class Stroke {
 
     public void setId(int id) {
         this.id = id;
+    }
+    public String getUser() {
+        return user;
+    }
+
+    public void setId(String user) {
+        this.user = user;
     }
 
     public double getSm1() {

@@ -20,26 +20,22 @@ public class StrokeActivity extends Activity {
         // create our sqlite helper class
         db = new SQLiteDatabaseHandler(this);
         // create some players
-        Stroke stroke1 = new Stroke();
-        Stroke stroke2 = new Stroke();
-        stroke1.setId(111111111);
-        stroke1.setSm1(23);
-        stroke1.setSm2(24);
-        stroke2.setSm1(25);
-        stroke2.setSm2(21);
-        stroke2.setId(222222222);
+//        Stroke stroke1 = new Stroke();
+//        Stroke stroke2 = new Stroke();
+//        stroke1.setSm1(23);
+//        stroke2.setSm1(25);;
+//
+//        // add them
+//        db.addStroke(stroke1);
+//        db.addStroke(stroke2);
+         //list all players
+        List<Smiles> smiles = db.allSmiles();
 
-        // add them
-        db.addStroke(stroke1);
-        db.addStroke(stroke2);
-        // list all players
-        List<Stroke> strokes = db.allStrokes();
+        if (smiles != null) {
+            String[] itemsNames = new String[smiles.size()];
 
-        if (strokes != null) {
-            String[] itemsNames = new String[strokes.size()];
-
-            for (int i = 0; i < strokes.size(); i++) {
-                itemsNames[i] = strokes.get(i).toString();
+            for (int i = 0; i < smiles.size(); i++) {
+                itemsNames[i] = smiles.get(i).toString();
             }
 
             // display like string instances

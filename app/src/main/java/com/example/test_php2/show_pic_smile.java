@@ -1,6 +1,7 @@
 package com.example.test_php2;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
@@ -24,13 +25,18 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 public class show_pic_smile extends PermissionActivity {
     private boolean mIsUploading = false;
+    private SQLiteDatabaseHandler db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pic_smile);
+        db = new SQLiteDatabaseHandler(this);
+//        db = new SQLiteDatabaseHandler(this);
+//        Stroke stroke1 = new Stroke();
 //        ImageView logoImageView = findViewById(R.id.imageView2);
 //        Bitmap bitmap = BitmapFactory.decodeFile(Environment.getExternalStorageDirectory() + "/pic_smile.jpg", null);
 //        logoImageView.setImageBitmap(bitmap);
@@ -60,7 +66,7 @@ public class show_pic_smile extends PermissionActivity {
         Date now = new Date();
         String path = (Environment.getExternalStorageDirectory()+"/"+"smile_"+formatter.format(now)+".jpg");
         Ion.with(this)
-                .load("http://69eb1511.ngrok.io/pro-android/smile.php")
+                .load("http://7a42bc58.ngrok.io/pro-android/smile.php")
                 .setMultipartFile("upload_file", new File(path))
                 .asString()
                 .setCallback(new FutureCallback<String>() {
@@ -95,8 +101,10 @@ public class show_pic_smile extends PermissionActivity {
     }
 
         public void process(){
+
+        final Smiles smile1 = new Smiles();
         Ion.with(this)
-                .load("http://69eb1511.ngrok.io/pro-android/smile/test.php")
+                .load("http://7a42bc58.ngrok.io/pro-android/smile/test.php")
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override
@@ -114,6 +122,13 @@ public class show_pic_smile extends PermissionActivity {
 
                         }*/
                         Toast.makeText(getBaseContext(), result, Toast.LENGTH_LONG).show();
+                        double sum = Double.parseDouble(result);
+                        smile1.setSm1(sum);
+                        db.addSmile(smile1);
+
+
+
+
 
                     }
                 });
