@@ -1,4 +1,5 @@
 package com.example.test_php2;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -16,6 +17,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.test_php2.R;
+import com.example.test_php2.sql.DatabaseHelper2;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 
@@ -29,6 +31,7 @@ import java.util.Date;
 import java.util.Locale;
 
 public class record extends AppCompatActivity implements View.OnClickListener{
+    private final AppCompatActivity activity = record.this;
 
     public static final int RECORD_AUDIO = 0;
     private MediaRecorder myAudioRecorder;
@@ -157,16 +160,67 @@ public class record extends AppCompatActivity implements View.OnClickListener{
         Date now = new Date();
         String path = Environment.getExternalStorageDirectory()+"/"+"record_"+formatter.format(now)+".wav";;
         Ion.with(this)
-                .load("http://7a42bc58.ngrok.io/pro-android/sound.php")
+                .load("http://4ad8f768.ngrok.io/pro-android/sound.php")
                 .setMultipartFile("upload_file", new File(path))
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override
                     public void onCompleted(Exception e, String result) {
-                        //process();
+                        process();
                     }
                 });
     }
+
+
+    DatabaseHelper2 db = new DatabaseHelper2(activity);
+
+    public void process(){
+        Ion.with(this)
+                .load("http://4ad8f768.ngrok.io/pro-android/sound/test.php")
+                .asString()
+                .setCallback(new FutureCallback<String>() {
+                    @Override
+                    public void onCompleted(Exception e, String result) {
+                        double dist = Double.parseDouble(result);
+
+
+                        if(test(dist)){
+                            db.updateDistRc(dist,"yuriyuripps");
+                            Intent intent = new Intent(record.this,Risk_record.class);
+                            startActivity(intent);
+                            //Toast.makeText(getBaseContext(), "Risk!!!", Toast.LENGTH_LONG).show();
+                        }else {
+                            Intent intent2 = new Intent(record.this,Norisk_record.class);
+                            startActivity(intent2);
+                            //Toast.makeText(getBaseContext(), "Same!!!", Toast.LENGTH_LONG).show();
+                        }
+
+//                        db.updateDistRc(dist,"yuriyuripps");
+                    }
+                });
+
+
+
+
+    }
+
+    public boolean test(double dist){
+        if(db.checkRc("yuriyuripps")){
+            if(dist > db.avgSound("yuriyuripps")){
+                return true;
+            }else {
+                return false;
+            }
+        }else {
+            if(dist > 130){
+                return true;
+            }else{
+                return false;
+            }
+        }
+    }
+
+
 
 //    public void process(){
 //        Ion.with(this)

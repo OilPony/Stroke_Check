@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.test_php2.R;
+import com.example.test_php2.sql.DatabaseHelper2;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 
@@ -28,6 +29,7 @@ import java.util.Date;
 import java.util.Locale;
 
 public class show_pic_arm extends AppCompatActivity {
+    private final AppCompatActivity activity = show_pic_arm.this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,12 +65,13 @@ public class show_pic_arm extends AppCompatActivity {
         String path = (Environment.getExternalStorageDirectory()+"/"+"arm_"+formatter.format(now)+".jpg");
 
         Ion.with(this)
-                .load("http://7a42bc58.ngrok.io/pro-android/arm.php")
+                .load("http://f113d49e.ngrok.io/pro-android/arm.php")
                 .setMultipartFile("upload_file", new File(path))
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override
                     public void onCompleted(Exception e, String result) {
+                        process();
 
                     }
                 });
@@ -95,6 +98,53 @@ public class show_pic_arm extends AppCompatActivity {
         }
 
 
+    }
+
+    DatabaseHelper2 db = new DatabaseHelper2(activity);
+
+    public void process(){
+        Ion.with(this)
+                .load("http://f113d49e.ngrok.io/pro-android/arm/test.php")
+                .asString()
+                .setCallback(new FutureCallback<String>() {
+                    @Override
+                    public void onCompleted(Exception e, String result) {
+                        double dist = Double.parseDouble(result);
+
+
+                        if(test(dist)){
+                            db.updateDistArm(dist,"yuriyuripps");
+                            Intent intent = new Intent(show_pic_arm.this,Risk_record.class);
+                            startActivity(intent);
+                            //Toast.makeText(getBaseContext(), "Risk!!!", Toast.LENGTH_LONG).show();
+                        }else {
+                            Intent intent2 = new Intent(show_pic_arm.this,Norisk_record.class);
+                            startActivity(intent2);
+                            //Toast.makeText(getBaseContext(), "Same!!!", Toast.LENGTH_LONG).show();
+                        }
+
+//                        db.updateDistRc(dist,"yuriyuripps");
+                    }
+                });
+
+
+
+
+    }
+    public boolean test(double dist){
+        if(db.checkArm("yuriyuripps")){
+            if(dist > db.avgArm("yuriyuripps")){
+                return true;
+            }else {
+                return false;
+            }
+        }else {
+            if(dist > 130){
+                return true;
+            }else{
+                return false;
+            }
+        }
     }
 
 }

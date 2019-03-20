@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SqliteLogin</string>
+    <string name="app_name">Check Risk Of Stroke</string>
     <string name="hint_name">Name</string>
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
