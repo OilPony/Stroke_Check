@@ -49,7 +49,12 @@
         <activity android:name=".Risk_record" />
         <activity android:name=".Norisk_record" />
         <activity android:name=".Risk_smile" />
-        <activity android:name=".Norisk_smile"></activity>
+        <activity android:name=".Norisk_smile" />
+        <activity android:name=".first" />
+        <activity android:name=".first_smile" />
+        <activity android:name=".first_show_pic_smile" />
+        <activity android:name=".first_show_pic_arm" />
+        <activity android:name=".first_arm"></activity>
     </application>
 
 </manifest>
