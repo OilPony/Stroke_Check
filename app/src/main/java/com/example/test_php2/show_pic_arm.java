@@ -65,7 +65,7 @@ public class show_pic_arm extends AppCompatActivity {
         String path = (Environment.getExternalStorageDirectory()+"/"+"arm_"+formatter.format(now)+".jpg");
 
         Ion.with(this)
-                .load("http://f113d49e.ngrok.io/pro-android/arm.php")
+                .load("http://9bcd9d53.ngrok.io/pro-android/arm.php")
                 .setMultipartFile("upload_file", new File(path))
                 .asString()
                 .setCallback(new FutureCallback<String>() {
@@ -104,7 +104,7 @@ public class show_pic_arm extends AppCompatActivity {
 
     public void process(){
         Ion.with(this)
-                .load("http://f113d49e.ngrok.io/pro-android/arm/test.php")
+                .load("http://9bcd9d53.ngrok.io/pro-android/arm/test.php")
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override
