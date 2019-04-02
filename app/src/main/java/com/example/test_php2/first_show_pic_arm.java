@@ -15,9 +15,11 @@ import android.widget.Toast;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -46,10 +48,38 @@ public class first_show_pic_arm extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                resizeImage();
                 up_pic();
             }
         });
 
+
+    }
+
+    public void resizeImage(){
+        SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy_HH_mm", Locale.KOREA);
+        Date now = new Date();
+        String count_st = Integer.toString(visitCount);
+        //final File file = new File(Environment.getExternalStorageDirectory()+"/"+count_st+".jpg");
+        String path = (Environment.getExternalStorageDirectory()+"/"+count_st+".jpg");
+        String Newpath = (Environment.getExternalStorageDirectory()+"/"+count_st+".jpg");
+
+        Bitmap photo = BitmapFactory.decodeFile(path);
+        photo = Bitmap.createScaledBitmap(photo,480,640,false);
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        photo.compress(Bitmap.CompressFormat.JPEG, 70,bytes);
+
+        File f = new File(Newpath);
+        try {
+            f.createNewFile();
+            FileOutputStream fo = new FileOutputStream(f);
+            fo.write(bytes.toByteArray());
+            fo.close();
+            File file = new File(path);
+            file.delete();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -62,7 +92,7 @@ public class first_show_pic_arm extends AppCompatActivity {
         String path = (Environment.getExternalStorageDirectory()+"/"+count_st+".jpg");
         //visitCount++;
         Ion.with(this)
-                .load("http://44be69a6.ngrok.io/pro-android/arm.php")
+                .load("http://2ce3a670.ngrok.io/pro-android/arm.php")
                 .setMultipartFile("upload_file", new File(path))
                 .asString()
                 .setCallback(new FutureCallback<String>() {
@@ -73,7 +103,7 @@ public class first_show_pic_arm extends AppCompatActivity {
                             startActivity(intent);
                         }
                         else {
-                            Intent intent = new Intent(first_show_pic_arm.this,StrokeActivity.class);
+                            Intent intent = new Intent(first_show_pic_arm.this,first_sound.class);
                             startActivity(intent);
                         }
                     }

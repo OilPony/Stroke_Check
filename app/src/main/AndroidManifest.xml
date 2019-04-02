@@ -54,7 +54,8 @@
         <activity android:name=".first_smile" />
         <activity android:name=".first_show_pic_smile" />
         <activity android:name=".first_show_pic_arm" />
-        <activity android:name=".first_arm"></activity>
+        <activity android:name=".first_arm" />
+        <activity android:name=".first_sound"></activity>
     </application>
 
 </manifest>
