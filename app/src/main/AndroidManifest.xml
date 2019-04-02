@@ -29,35 +29,49 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".UsersActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".record"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".arm"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".smile"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".show_pic_arm"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".show_pic_smile"
-            android:screenOrientation="portrait" />
-        <activity android:name=".StrokeActivity" />
-        <activity android:name=".Risk_record" />
-        <activity android:name=".Norisk_record" />
-        <activity android:name=".Risk_smile" />
-        <activity android:name=".Norisk_smile" />
-        <activity android:name=".first_smile" />
-        <activity android:name=".first_show_pic_smile" />
-        <activity android:name=".first_show_pic_arm" />
-        <activity android:name=".first_arm" />
-        <activity android:name=".first_sound" />
-        <activity android:name=".first_detail_smile" />
-        <activity android:name=".first_detail_arm" />
-        <activity android:name=".first_detail_sound"></activity>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".StrokeActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".Risk_record"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".Norisk_record"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".Risk_smile"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".Norisk_smile"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".first_smile"/>
+        <activity android:name=".first_show_pic_smile"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".first_show_pic_arm"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".first_arm"/>
+        <activity android:name=".first_sound"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".first_detail_smile"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".first_detail_arm"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".first_detail_sound"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

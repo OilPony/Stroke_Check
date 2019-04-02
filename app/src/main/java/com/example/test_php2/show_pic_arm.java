@@ -17,9 +17,11 @@ import com.example.test_php2.sql.DatabaseHelper2;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.OutputStream;
 
 import java.text.ParseException;
@@ -52,11 +54,40 @@ public class show_pic_arm extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                resizeImage();
                 up_pic();
             }
         });
 
     }
+
+    public void resizeImage(){
+        SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy_HH_mm", Locale.KOREA);
+        Date now = new Date();
+
+        //final File file = new File(Environment.getExternalStorageDirectory()+"/"+count_st+".jpg");
+        //String path = (Environment.getExternalStorageDirectory()+"/"+count_st+".jpg");
+        String Newpath = (Environment.getExternalStorageDirectory()+"/"+"arm_"+formatter.format(now)+".jpg");
+
+        Bitmap photo = BitmapFactory.decodeFile(Newpath);
+        photo = Bitmap.createScaledBitmap(photo,480,640,false);
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        photo.compress(Bitmap.CompressFormat.JPEG, 80,bytes);
+
+        File f = new File(Newpath);
+        try {
+            f.createNewFile();
+            FileOutputStream fo = new FileOutputStream(f);
+            fo.write(bytes.toByteArray());
+            fo.close();
+            //File file = new File(path);
+            //file.delete();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public void up_pic(){
         Toast.makeText(getBaseContext(), "อัพโหลดรูป", Toast.LENGTH_LONG).show();
         //String path = Environment.getExternalStorageDirectory() + "/pic_arm.jpg";
@@ -65,7 +96,7 @@ public class show_pic_arm extends AppCompatActivity {
         String path = (Environment.getExternalStorageDirectory()+"/"+"arm_"+formatter.format(now)+".jpg");
 
         Ion.with(this)
-                .load("http://2ce3a670.ngrok.io/pro-android/arm.php")
+                .load("http://0342578a.ngrok.io/pro-android/arm.php")
                 .setMultipartFile("upload_file", new File(path))
                 .asString()
                 .setCallback(new FutureCallback<String>() {
@@ -104,7 +135,7 @@ public class show_pic_arm extends AppCompatActivity {
 
     public void process(){
         Ion.with(this)
-                .load("http://2ce3a670.ngrok.io/pro-android/arm/test.php")
+                .load("http://0342578a.ngrok.io/pro-android/arm/test.php")
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override

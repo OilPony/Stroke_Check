@@ -96,7 +96,7 @@ public class first_show_pic_smile extends AppCompatActivity {
         String path = (Environment.getExternalStorageDirectory()+"/"+count_st+".jpg");
         //visitCount++;
         Ion.with(this)
-                .load("http://2ce3a670.ngrok.io/pro-android/smile.php")
+                .load("http://0342578a.ngrok.io/pro-android/smile.php")
                 .setMultipartFile("upload_file", new File(path))
                 .asString()
                 .setCallback(new FutureCallback<String>() {
@@ -148,7 +148,7 @@ public class first_show_pic_smile extends AppCompatActivity {
 
     public void process(){
         Ion.with(this)
-                .load("http://2ce3a670.ngrok.io/pro-android/smile/first_test.php")
+                .load("http://0342578a.ngrok.io/pro-android/smile/first_test.php")
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override
