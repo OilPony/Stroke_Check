@@ -171,7 +171,7 @@ public class first_show_pic_smile extends AppCompatActivity {
 
                         //Toast.makeText(getBaseContext(), db.check("yuriyuripps"), Toast.LENGTH_LONG).show();
 
-                        Intent intent = new Intent(first_show_pic_smile.this,first_arm.class);
+                        Intent intent = new Intent(first_show_pic_smile.this,first_detail_arm.class);
                         startActivity(intent);
 
 

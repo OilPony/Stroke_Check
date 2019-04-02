@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.test_php2.model.User;
+import com.example.test_php2.sql.DatabaseHelper2;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 
@@ -28,6 +30,7 @@ import java.util.Locale;
 
 
 public class first_show_pic_arm extends AppCompatActivity {
+    private final AppCompatActivity activity = first_show_pic_arm.this;
     static int visitCount = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,13 +64,13 @@ public class first_show_pic_arm extends AppCompatActivity {
         Date now = new Date();
         String count_st = Integer.toString(visitCount);
         //final File file = new File(Environment.getExternalStorageDirectory()+"/"+count_st+".jpg");
-        String path = (Environment.getExternalStorageDirectory()+"/"+count_st+".jpg");
+        //String path = (Environment.getExternalStorageDirectory()+"/"+count_st+".jpg");
         String Newpath = (Environment.getExternalStorageDirectory()+"/"+count_st+".jpg");
 
-        Bitmap photo = BitmapFactory.decodeFile(path);
+        Bitmap photo = BitmapFactory.decodeFile(Newpath);
         photo = Bitmap.createScaledBitmap(photo,480,640,false);
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-        photo.compress(Bitmap.CompressFormat.JPEG, 70,bytes);
+        photo.compress(Bitmap.CompressFormat.JPEG, 80,bytes);
 
         File f = new File(Newpath);
         try {
@@ -75,13 +78,14 @@ public class first_show_pic_arm extends AppCompatActivity {
             FileOutputStream fo = new FileOutputStream(f);
             fo.write(bytes.toByteArray());
             fo.close();
-            File file = new File(path);
-            file.delete();
+            //File file = new File(path);
+            //file.delete();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
+
 
     public void up_pic(){
         Toast.makeText(getBaseContext(), "อัพโหลดรูป", Toast.LENGTH_LONG).show();
@@ -103,8 +107,7 @@ public class first_show_pic_arm extends AppCompatActivity {
                             startActivity(intent);
                         }
                         else {
-                            Intent intent = new Intent(first_show_pic_arm.this,first_sound.class);
-                            startActivity(intent);
+                            process();
                         }
                     }
                 });
@@ -133,6 +136,47 @@ public class first_show_pic_arm extends AppCompatActivity {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+
+
+    }
+
+
+    DatabaseHelper2 db2 = new DatabaseHelper2(activity);
+    User user = new User();
+    public void process(){
+        Ion.with(this)
+                .load("http://2ce3a670.ngrok.io/pro-android/arm/first_test.php")
+                .asString()
+                .setCallback(new FutureCallback<String>() {
+                    @Override
+                    public void onCompleted(Exception e, String result) {
+                        double sum = Double.parseDouble(result);
+                        String sum_st = Double.toString(sum);
+                        String name = user.getName();
+                        db2.updateDistArm(sum,name);
+                        Toast.makeText(getBaseContext(), sum_st, Toast.LENGTH_LONG).show();
+//                        if(test(dist)){
+//                            db.updateDistSm(dist,"yuriyuripps");
+//                            Intent intent = new Intent(show_pic_smile.this,Risk_smile.class);
+//                            startActivity(intent);
+//                            //Toast.makeText(getBaseContext(), "Risk!!!", Toast.LENGTH_LONG).show();
+//                        }else {
+//                            Intent intent2 = new Intent(show_pic_smile.this,Norisk_smile.class);
+//                            startActivity(intent2);
+//                            //Toast.makeText(getBaseContext(), "Same!!!", Toast.LENGTH_LONG).show();
+//                        }
+
+                        //Toast.makeText(getBaseContext(), db.check("yuriyuripps"), Toast.LENGTH_LONG).show();
+
+                        Intent intent = new Intent(first_show_pic_arm.this,first_detail_sound.class);
+                        startActivity(intent);
+
+
+                    }
+                });
+
+
+
 
 
     }

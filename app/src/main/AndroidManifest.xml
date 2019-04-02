@@ -50,12 +50,14 @@
         <activity android:name=".Norisk_record" />
         <activity android:name=".Risk_smile" />
         <activity android:name=".Norisk_smile" />
-        <activity android:name=".first" />
         <activity android:name=".first_smile" />
         <activity android:name=".first_show_pic_smile" />
         <activity android:name=".first_show_pic_arm" />
         <activity android:name=".first_arm" />
-        <activity android:name=".first_sound"></activity>
+        <activity android:name=".first_sound" />
+        <activity android:name=".first_detail_smile" />
+        <activity android:name=".first_detail_arm" />
+        <activity android:name=".first_detail_sound"></activity>
     </application>
 
 </manifest>
