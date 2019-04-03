@@ -103,7 +103,7 @@ public class show_pic_smile extends PermissionActivity {
         Date now = new Date();
         String path = (Environment.getExternalStorageDirectory()+"/"+"smile_"+formatter.format(now)+".jpg");
         Ion.with(this)
-                .load("http://0342578a.ngrok.io/pro-android/smile.php")
+                .load("http://ce3c4a63.ngrok.io/pro-android/smile.php")
                 .setMultipartFile("upload_file", new File(path))
                 .asString()
                 .setCallback(new FutureCallback<String>() {
@@ -140,7 +140,7 @@ public class show_pic_smile extends PermissionActivity {
 
     public void process(){
         Ion.with(this)
-                .load("http://0342578a.ngrok.io/pro-android/smile/test.php")
+                .load("http://ce3c4a63.ngrok.io/pro-android/smile/test.php")
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override
