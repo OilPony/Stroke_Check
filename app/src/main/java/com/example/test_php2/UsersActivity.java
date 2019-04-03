@@ -75,6 +75,15 @@ public class UsersActivity extends AppCompatActivity {
             }
         });
 
+        TextView tv = findViewById(R.id.textView);
+        tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(UsersActivity.this,StrokeActivity.class);
+                startActivity(i);
+            }
+        });
+
 
 
     }
