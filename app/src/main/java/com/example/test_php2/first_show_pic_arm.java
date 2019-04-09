@@ -61,7 +61,7 @@ public class first_show_pic_arm extends AppCompatActivity {
     }
 
     public void resizeImage(){
-        SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy_HH_mm", Locale.KOREA);
+        SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy", Locale.KOREA);
         Date now = new Date();
         String count_st = Integer.toString(visitCount);
         //final File file = new File(Environment.getExternalStorageDirectory()+"/"+count_st+".jpg");

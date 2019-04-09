@@ -192,7 +192,7 @@ public class DatabaseHelper2  extends SQLiteOpenHelper {
 
 
 
-            if (cursorCount > 3) {
+            if (cursorCount > 6) {
                 return true;
             } else {
                 return false;
@@ -209,7 +209,7 @@ public class DatabaseHelper2  extends SQLiteOpenHelper {
         cursor.close();
         db.close();
 
-            if (cursorCount > 3) {
+            if (cursorCount > 6) {
                 return true;
             } else {
                 return false;
@@ -229,7 +229,7 @@ public class DatabaseHelper2  extends SQLiteOpenHelper {
         db.close();
 
 
-            if (cursorCount > 3) {
+            if (cursorCount > 6) {
                 return true;
             } else {
                 return false;

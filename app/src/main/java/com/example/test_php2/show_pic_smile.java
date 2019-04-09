@@ -71,7 +71,7 @@ public class show_pic_smile extends PermissionActivity {
     }
 
     public void resizeImage(){
-        SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy_HH_mm", Locale.KOREA);
+        SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy", Locale.KOREA);
         Date now = new Date();
 
         //final File file = new File(Environment.getExternalStorageDirectory()+"/"+count_st+".jpg");
@@ -149,10 +149,10 @@ public class show_pic_smile extends PermissionActivity {
                     public void onCompleted(Exception e, String result) {
                         double dist = Double.parseDouble(result);
                         if(test(dist)){
-                            db2.updateDistSm(dist,db1.getName());
                             Intent intent = new Intent(show_pic_smile.this,Risk_smile.class);
                             startActivity(intent);
                         }else {
+                            db2.updateDistSm(dist,db1.getName());
                             Intent intent2 = new Intent(show_pic_smile.this,Norisk_smile.class);
                             startActivity(intent2);
 

@@ -63,7 +63,7 @@ public class show_pic_arm extends AppCompatActivity {
     }
 
     public void resizeImage(){
-        SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy_HH_mm", Locale.KOREA);
+        SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy", Locale.KOREA);
         Date now = new Date();
 
         //final File file = new File(Environment.getExternalStorageDirectory()+"/"+count_st+".jpg");
@@ -145,10 +145,11 @@ public class show_pic_arm extends AppCompatActivity {
                         double dist = Double.parseDouble(result);
 
                         if(test(dist)){
-                            db2.updateDistArm(dist,db1.getName());
+
                             Intent intent = new Intent(show_pic_arm.this,Risk_record.class);
                             startActivity(intent);
-                        }else {
+                        }else
+                            {db2.updateDistArm(dist,db1.getName());
                             Intent intent2 = new Intent(show_pic_arm.this,Norisk_record.class);
                             startActivity(intent2);
                         }
