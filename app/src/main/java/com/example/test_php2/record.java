@@ -177,7 +177,6 @@ public class record extends AppCompatActivity implements View.OnClickListener{
 
     DatabaseHelper2 db = new DatabaseHelper2(activity);
     DatabaseHelper db1 = new DatabaseHelper(activity);
-    User user = new User();
 
 
 
@@ -191,11 +190,11 @@ public class record extends AppCompatActivity implements View.OnClickListener{
                         double dist = Double.parseDouble(result);
 
                         if(test(dist)){
-                            db.updateDistRc(dist,db1.getName());
                             Intent intent = new Intent(record.this,Risk_record.class);
                             startActivity(intent);
 
                         }else {
+                            db.updateDistRc(dist,db1.getName());
                             Intent intent2 = new Intent(record.this,Norisk_record.class);
                             startActivity(intent2);
                         }

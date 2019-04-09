@@ -148,8 +148,8 @@ public class show_pic_arm extends AppCompatActivity {
 
                             Intent intent = new Intent(show_pic_arm.this,Risk_record.class);
                             startActivity(intent);
-                        }else
-                            {db2.updateDistArm(dist,db1.getName());
+                        }else{
+                            db2.updateDistArm(dist,db1.getName());
                             Intent intent2 = new Intent(show_pic_arm.this,Norisk_record.class);
                             startActivity(intent2);
                         }

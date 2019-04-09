@@ -155,18 +155,9 @@ public class show_pic_smile extends PermissionActivity {
                             db2.updateDistSm(dist,db1.getName());
                             Intent intent2 = new Intent(show_pic_smile.this,Norisk_smile.class);
                             startActivity(intent2);
-
                         }
-
-
-
-
                     }
                 });
-
-
-
-
     }
 
     public boolean test(double dist){

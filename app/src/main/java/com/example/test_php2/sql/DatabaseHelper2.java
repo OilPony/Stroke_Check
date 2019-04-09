@@ -61,54 +61,61 @@ public class DatabaseHelper2  extends SQLiteOpenHelper {
         ContentValues sm = new ContentValues();
         sm.put(COL_DIST, 2.18);
         sm.put(COL_NAME, "yuriyuripps");
-        db.insert(SQL_CREATE_TABLE_SMILE, null, sm);
+        db.insert(SMILE_TABLE, null, sm);
 
         sm = new ContentValues();
         sm.put(COL_DIST, 2.15);
         sm.put(COL_NAME, "yuriyuripps");
-        db.insert(SQL_CREATE_TABLE_SMILE, null, sm);
+        db.insert(SMILE_TABLE, null, sm);
 
         sm = new ContentValues();
         sm.put(COL_DIST, 0.05);
         sm.put(COL_NAME, "yuriyuripps");
-        db.insert(SQL_CREATE_TABLE_SMILE, null, sm);
+        db.insert(SMILE_TABLE, null, sm);
 
         sm = new ContentValues();
         sm.put(COL_DIST, 7.48);
         sm.put(COL_NAME, "yuriyuripps");
-        db.insert(SQL_CREATE_TABLE_SMILE, null, sm);
+        db.insert(SMILE_TABLE, null, sm);
 
         sm = new ContentValues();
         sm.put(COL_DIST, 2.00);
         sm.put(COL_NAME, "yuriyuripps");
-        db.insert(SQL_CREATE_TABLE_SMILE, null, sm);
+        db.insert(SMILE_TABLE, null, sm);
+
+        sm = new ContentValues();
+        sm.put(COL_DIST, 2.00);
+        sm.put(COL_NAME, "yuriyuripps");
+        db.insert(SMILE_TABLE, null, sm);
+
+
         //-------------------------------------------------------------
 
         db.execSQL(SQL_CREATE_TABLE_ARM);
         ContentValues am = new ContentValues();
         am.put(COL_DIST, 35.00);
         am.put(COL_NAME, "yuriyuripps");
-        db.insert(SQL_CREATE_TABLE_ARM, null, am);
+        db.insert(ARM_TABLE, null, am);
 
         am = new ContentValues();
         am.put(COL_DIST, 30.00);
         am.put(COL_NAME, "yuriyuripps");
-        db.insert(SQL_CREATE_TABLE_ARM, null, am);
+        db.insert(ARM_TABLE, null, am);
 
         am = new ContentValues();
         am.put(COL_DIST, 32.00);
         am.put(COL_NAME, "yuriyuripps");
-        db.insert(SQL_CREATE_TABLE_ARM, null, am);
+        db.insert(ARM_TABLE, null, am);
 
         am = new ContentValues();
         am.put(COL_DIST, 33.00);
         am.put(COL_NAME, "yuriyuripps");
-        db.insert(SQL_CREATE_TABLE_ARM, null, am);
+        db.insert(ARM_TABLE, null, am);
 
         am = new ContentValues();
         am.put(COL_DIST, 36.00);
         am.put(COL_NAME, "yuriyuripps");
-        db.insert(SQL_CREATE_TABLE_ARM, null,am);
+        db.insert(ARM_TABLE, null,am);
         //-------------------------------------------------------------
 
         db.execSQL(SQL_CREATE_TABLE_SOUND);
@@ -117,30 +124,37 @@ public class DatabaseHelper2  extends SQLiteOpenHelper {
         cv.put(COL_NAME, "yuriyuripps");
         db.insert(SOUND_TABLE, null, cv);
 
-//        cv = new ContentValues();
-//        cv.put(COL_DIST, 124.25);
-//        cv.put(COL_NAME, "yuriyuripps");
-//        db.insert(SOUND_TABLE, null, cv);
-//
-//        cv = new ContentValues();
-//        cv.put(COL_DIST, 128.21);
-//        cv.put(COL_NAME, "yuriyuripps");
-//        db.insert(SOUND_TABLE, null, cv);
-//
-//        cv = new ContentValues();
-//        cv.put(COL_DIST, 132.24);
-//        cv.put(COL_NAME, "yuriyuripps");
-//        db.insert(SOUND_TABLE, null, cv);
-//
-//        cv = new ContentValues();
-//        cv.put(COL_DIST, 129.54);
-//        cv.put(COL_NAME, "yuriyuripps");
-//        db.insert(SOUND_TABLE, null, cv);
-//
-//        cv = new ContentValues();
-//        cv.put(COL_DIST, 129.54);
-//        cv.put(COL_NAME, "yuriyuripps");
-//        db.insert(SOUND_TABLE, null, cv);
+        cv = new ContentValues();
+        cv.put(COL_DIST, 124.25);
+        cv.put(COL_NAME, "yuriyuripps");
+        db.insert(SOUND_TABLE, null, cv);
+
+        cv = new ContentValues();
+        cv.put(COL_DIST, 128.21);
+        cv.put(COL_NAME, "yuriyuripps");
+        db.insert(SOUND_TABLE, null, cv);
+
+        cv = new ContentValues();
+        cv.put(COL_DIST, 132.24);
+        cv.put(COL_NAME, "yuriyuripps");
+        db.insert(SOUND_TABLE, null, cv);
+
+        cv = new ContentValues();
+        cv.put(COL_DIST, 129.54);
+        cv.put(COL_NAME, "yuriyuripps");
+        db.insert(SOUND_TABLE, null, cv);
+
+        cv = new ContentValues();
+        cv.put(COL_DIST, 129.54);
+        cv.put(COL_NAME, "yuriyuripps");
+        db.insert(SOUND_TABLE, null, cv);
+
+
+        cv = new ContentValues();
+        cv.put(COL_DIST, 129.54);
+        cv.put(COL_NAME, "yuriyuripps");
+        db.insert(SOUND_TABLE, null, cv);
+
 
 
 
@@ -165,8 +179,8 @@ public class DatabaseHelper2  extends SQLiteOpenHelper {
     public void updateDistSm(double dist , String name){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(COL_DIST, dist);
         values.put(COL_NAME, name);
+        values.put(COL_DIST, dist);
         db.insert(SMILE_TABLE, null, values);
         db.close();
 
@@ -176,6 +190,7 @@ public class DatabaseHelper2  extends SQLiteOpenHelper {
     public void updateDistArm(double dist , String name){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
+        values.put(COL_NAME, name);
         values.put(COL_DIST, dist);
         db.insert(ARM_TABLE, null, values);
         db.close();
@@ -192,7 +207,7 @@ public class DatabaseHelper2  extends SQLiteOpenHelper {
 
 
 
-            if (cursorCount > 6) {
+            if (cursorCount >= 6) {
                 return true;
             } else {
                 return false;
@@ -209,7 +224,7 @@ public class DatabaseHelper2  extends SQLiteOpenHelper {
         cursor.close();
         db.close();
 
-            if (cursorCount > 6) {
+            if (cursorCount >= 6) {
                 return true;
             } else {
                 return false;
@@ -229,7 +244,7 @@ public class DatabaseHelper2  extends SQLiteOpenHelper {
         db.close();
 
 
-            if (cursorCount > 6) {
+            if (cursorCount >= 6) {
                 return true;
             } else {
                 return false;
@@ -342,6 +357,7 @@ public class DatabaseHelper2  extends SQLiteOpenHelper {
         cursor.moveToFirst();
         double cr = cursor.getDouble(cursor.getColumnIndex(COL_DIST));
         return cr;
+
     }
 
     public double firstSmile(String name){
