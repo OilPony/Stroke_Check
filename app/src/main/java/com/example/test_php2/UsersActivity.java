@@ -20,7 +20,7 @@ import com.example.test_php2.utils.PreferenceUtils;
 public class UsersActivity extends AppCompatActivity {
 
     private TextView textViewName;
-
+    //public String email = PreferenceUtils.getName(this);
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);

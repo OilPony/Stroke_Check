@@ -12,6 +12,7 @@ import android.view.View;
 
 import com.example.test_php2.R;
 import com.example.test_php2.helper.InputValidation;
+import com.example.test_php2.model.User;
 import com.example.test_php2.sql.DatabaseHelper;
 import com.example.test_php2.utils.PreferenceUtils;
 import com.example.test_php2.sql.DatabaseHelper;
@@ -35,6 +36,8 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
 
     private InputValidation inputValidation;
     private DatabaseHelper databaseHelper;
+
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,12 +110,17 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
 
         if (databaseHelper.checkUser(name, password)) {
             PreferenceUtils.saveName(name, this);
+            databaseHelper.add(name);
             PreferenceUtils.savePassword(password, this);
             Intent accountsIntent = new Intent(activity, UsersActivity.class);
             accountsIntent.putExtra("EMAIL", textInputEditTextEmail.getText().toString().trim());
             emptyInputEditText();
+
             startActivity(accountsIntent);
             finish();
+
+
+
         } else {
             Snackbar.make(nestedScrollView, getString(R.string.error_valid_email_password), Snackbar.LENGTH_LONG).show();
         }

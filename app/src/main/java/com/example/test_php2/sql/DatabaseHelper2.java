@@ -117,25 +117,30 @@ public class DatabaseHelper2  extends SQLiteOpenHelper {
         cv.put(COL_NAME, "yuriyuripps");
         db.insert(SOUND_TABLE, null, cv);
 
-        cv = new ContentValues();
-        cv.put(COL_DIST, 124.25);
-        cv.put(COL_NAME, "yuriyuripps");
-        db.insert(SOUND_TABLE, null, cv);
-
-        cv = new ContentValues();
-        cv.put(COL_DIST, 128.21);
-        cv.put(COL_NAME, "yuriyuripps");
-        db.insert(SOUND_TABLE, null, cv);
-
-        cv = new ContentValues();
-        cv.put(COL_DIST, 132.24);
-        cv.put(COL_NAME, "yuriyuripps");
-        db.insert(SOUND_TABLE, null, cv);
-
-        cv = new ContentValues();
-        cv.put(COL_DIST, 129.54);
-        cv.put(COL_NAME, "yuriyuripps");
-        db.insert(SOUND_TABLE, null, cv);
+//        cv = new ContentValues();
+//        cv.put(COL_DIST, 124.25);
+//        cv.put(COL_NAME, "yuriyuripps");
+//        db.insert(SOUND_TABLE, null, cv);
+//
+//        cv = new ContentValues();
+//        cv.put(COL_DIST, 128.21);
+//        cv.put(COL_NAME, "yuriyuripps");
+//        db.insert(SOUND_TABLE, null, cv);
+//
+//        cv = new ContentValues();
+//        cv.put(COL_DIST, 132.24);
+//        cv.put(COL_NAME, "yuriyuripps");
+//        db.insert(SOUND_TABLE, null, cv);
+//
+//        cv = new ContentValues();
+//        cv.put(COL_DIST, 129.54);
+//        cv.put(COL_NAME, "yuriyuripps");
+//        db.insert(SOUND_TABLE, null, cv);
+//
+//        cv = new ContentValues();
+//        cv.put(COL_DIST, 129.54);
+//        cv.put(COL_NAME, "yuriyuripps");
+//        db.insert(SOUND_TABLE, null, cv);
 
 
 
@@ -235,81 +240,130 @@ public class DatabaseHelper2  extends SQLiteOpenHelper {
 
     }
 
-    public double avgSound(String name){
+    public double maxSound(String name){
         SQLiteDatabase db = this.getWritableDatabase();
         name = "'" + name + "'";
-        double sum = 0;
+        double max = 0;
+        double min = 1000;
         Cursor cursor = db.rawQuery("SELECT " + COL_DIST
                 + " FROM " + SOUND_TABLE + " WHERE " + COL_NAME + "= " + name , null);
-        for(int i =0; i<cursor.getCount(); ++i){
+        for(int i = cursor.getCount()-1; i>= cursor.getCount()-5; --i){
             cursor.moveToPosition(i);
             double cr = cursor.getDouble(cursor.getColumnIndex(COL_DIST));
 
-            sum += cr;
+            if(cr > max){
+                max = cr;
+            }
+            if(cr < min){
+                min = cr;
+            }
+
 
         }
 
         cursor.close();
         db.close();
 
-        return sum/(cursor.getCount());
+        return max+((max-min)/2);
     }
 
-    public double avgSmile(String name){
+    public double maxSmile(String name){
         SQLiteDatabase db = this.getWritableDatabase();
         name = "'" + name + "'";
-        double sum = 0;
+        double max = 0;
+        double min = 1000;
         Cursor cursor = db.rawQuery("SELECT " + COL_DIST
                 + " FROM " + SMILE_TABLE + " WHERE " + COL_NAME + "= " + name , null);
-        for(int i =0; i<cursor.getCount(); ++i){
+        for(int i = cursor.getCount()-1; i>= cursor.getCount()-5; --i){
             cursor.moveToPosition(i);
             double cr = cursor.getDouble(cursor.getColumnIndex(COL_DIST));
 
-            sum += cr;
+            if(cr > max){
+                max = cr;
+            }
+            if(cr < min){
+                min = cr;
+            }
 
         }
 
         cursor.close();
         db.close();
 
-        return sum/cursor.getColumnCount();
+        return max+((max-min)/2);
     }
 
-    public double avgArm(String name){
+    public double maxArm(String name){
         SQLiteDatabase db = this.getWritableDatabase();
         name = "'" + name + "'";
-        double sum = 0;
+        double max = 0;
+        double min = 1000;
         Cursor cursor = db.rawQuery("SELECT " + COL_DIST
                 + " FROM " + ARM_TABLE + " WHERE " + COL_NAME + "= " + name , null);
-        for(int i =0; i<cursor.getCount(); ++i){
+        for(int i = cursor.getCount()-1; i>= cursor.getCount()-5; --i){
             cursor.moveToPosition(i);
             double cr = cursor.getDouble(cursor.getColumnIndex(COL_DIST));
 
-            sum += cr;
+            if(cr > max){
+                max = cr;
+            }
+            if(cr < min){
+                min = cr;
+            }
 
         }
-
-
-
-        return sum/cursor.getCount();
-    }
-
-    public String check(String name){
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        name = "'" + name + "'";
-
-        Cursor cursor = db.rawQuery("SELECT " + COL_DIST
-                + " FROM " + SOUND_TABLE + " WHERE " + COL_NAME + "= " + name , null);
-        String cursorCount = String.valueOf(cursor.getCount());
         cursor.close();
         db.close();
 
-        return cursorCount;
 
 
+        return max+((max-min)/2);
+    }
 
+//    public String check(String name){
+//        SQLiteDatabase db = this.getWritableDatabase();
+//
+//        name = "'" + name + "'";
+//
+//        Cursor cursor = db.rawQuery("SELECT " + COL_DIST
+//                + " FROM " + SOUND_TABLE + " WHERE " + COL_NAME + "= " + name , null);
+//        String cursorCount = String.valueOf(cursor.getCount());
+//        cursor.close();
+//        db.close();
+//
+//        return cursorCount;
+//    }
+    public double firstSound(String name){
+        SQLiteDatabase db = this.getWritableDatabase();
+        name = "'" + name + "'";
+        Cursor cursor = db.rawQuery("SELECT " + COL_DIST
+                + " FROM " + SOUND_TABLE + " WHERE " + COL_NAME + "= " + name , null);
 
+        cursor.moveToFirst();
+        double cr = cursor.getDouble(cursor.getColumnIndex(COL_DIST));
+        return cr;
+    }
+
+    public double firstSmile(String name){
+        SQLiteDatabase db = this.getWritableDatabase();
+        name = "'" + name + "'";
+        Cursor cursor = db.rawQuery("SELECT " + COL_DIST
+                + " FROM " + SMILE_TABLE + " WHERE " + COL_NAME + "= " + name , null);
+
+        cursor.moveToFirst();
+        double cr = cursor.getDouble(cursor.getColumnIndex(COL_DIST));
+        return cr;
+    }
+
+    public double firstArm(String name){
+        SQLiteDatabase db = this.getWritableDatabase();
+        name = "'" + name + "'";
+        Cursor cursor = db.rawQuery("SELECT " + COL_DIST
+                + " FROM " + ARM_TABLE + " WHERE " + COL_NAME + "= " + name , null);
+
+        cursor.moveToFirst();
+        double cr = cursor.getDouble(cursor.getColumnIndex(COL_DIST));
+        return cr;
     }
 
 

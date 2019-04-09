@@ -15,6 +15,7 @@ import android.graphics.Matrix;
 
 import com.example.test_php2.model.User;
 import com.example.test_php2.sql.DatabaseHelper2;
+import com.example.test_php2.utils.PreferenceUtils;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 import com.luseen.simplepermission.permissions.PermissionActivity;
@@ -103,7 +104,7 @@ public class show_pic_smile extends PermissionActivity {
         Date now = new Date();
         String path = (Environment.getExternalStorageDirectory()+"/"+"smile_"+formatter.format(now)+".jpg");
         Ion.with(this)
-                .load("http://ce3c4a63.ngrok.io/pro-android/smile.php")
+                .load("http://7e98a5bb.ngrok.io/pro-android/smile.php")
                 .setMultipartFile("upload_file", new File(path))
                 .asString()
                 .setCallback(new FutureCallback<String>() {
@@ -136,29 +137,28 @@ public class show_pic_smile extends PermissionActivity {
 
 
     }
-    DatabaseHelper2 db = new DatabaseHelper2(activity);
+    DatabaseHelper2 db2 = new DatabaseHelper2(activity);
+    DatabaseHelper db1 = new DatabaseHelper(activity);
 
     public void process(){
         Ion.with(this)
-                .load("http://ce3c4a63.ngrok.io/pro-android/smile/test.php")
+                .load("http://7e98a5bb.ngrok.io/pro-android/smile/test.php")
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override
                     public void onCompleted(Exception e, String result) {
                         double dist = Double.parseDouble(result);
-                        //Toast.makeText(getBaseContext(), "Risk!!!", Toast.LENGTH_LONG).show();
                         if(test(dist)){
-                            db.updateDistSm(dist,"yuriyuripps");
+                            db2.updateDistSm(dist,db1.getName());
                             Intent intent = new Intent(show_pic_smile.this,Risk_smile.class);
                             startActivity(intent);
-                            //Toast.makeText(getBaseContext(), "Risk!!!", Toast.LENGTH_LONG).show();
                         }else {
                             Intent intent2 = new Intent(show_pic_smile.this,Norisk_smile.class);
                             startActivity(intent2);
-                            //Toast.makeText(getBaseContext(), "Same!!!", Toast.LENGTH_LONG).show();
+
                         }
 
-                        //Toast.makeText(getBaseContext(), db.check("yuriyuripps"), Toast.LENGTH_LONG).show();
+
 
 
                     }
@@ -169,47 +169,15 @@ public class show_pic_smile extends PermissionActivity {
 
     }
 
-//        public void process(){
-//        final User user1 = new User();
-//        Ion.with(this)
-//                .load("http://4ad8f768.ngrok.io/pro-android/smile/test.php")
-//                .asString()
-//                .setCallback(new FutureCallback<String>() {
-//                    @Override
-//                    public void onCompleted(Exception e, String result) {
-//                        Double dist = Double.parseDouble(result);
-//
-//                        if(test(dist)){
-//                            db.updateDistSm(dist,"yuriyuripps");
-//                            Intent intent = new Intent(show_pic_smile.this,Risk_smile.class);
-//                            startActivity(intent);
-//                            //db.updateDistRc(dist,"yuriyuripps");
-//                            //Toast.makeText(getBaseContext(), "Risk!!!", Toast.LENGTH_LONG).show();
-//                        }else {
-//                            Intent intent2 = new Intent(show_pic_smile.this,Norisk_smile.class);
-//                            startActivity(intent2);
-//                            //Toast.makeText(getBaseContext(), "Same!!!", Toast.LENGTH_LONG).show();
-//                        }
-//
-//
-//
-//
-//
-//
-//
-//                    }
-//                });
-//    }
-
-    public boolean test(double sm){
-        if(db.checkSm("yuriyuripps")){
-            if(sm > db.avgSmile("yuriyuripps")){
+    public boolean test(double dist){
+        if(db2.checkSm(db1.getName())){
+            if(dist > db2.maxSmile(db1.getName())){
                 return true;
             }else {
                 return false;
             }
         }else {
-            if(sm > 130){
+            if(dist > db2.firstSmile(db1.getName())){
                 return true;
             }else{
                 return false;

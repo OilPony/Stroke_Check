@@ -106,7 +106,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             return;
         }
 
-
+        String name = textInputEditTextName.getText().toString().trim();
         if (!databaseHelper.checkUser(textInputEditTextName.getText().toString().trim())) {
 
             user.setName(textInputEditTextName.getText().toString().trim());
@@ -114,6 +114,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             user.setPassword(textInputEditTextPassword.getText().toString().trim());
 
             databaseHelper.addUser(user);
+            databaseHelper.add(name);
 
             // Snack Bar to show success message that record saved successfully
             Snackbar.make(nestedScrollView, getString(R.string.success_message), Snackbar.LENGTH_LONG).show();

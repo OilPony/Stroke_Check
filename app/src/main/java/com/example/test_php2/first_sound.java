@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.test_php2.model.User;
+import com.example.test_php2.sql.DatabaseHelper;
 import com.example.test_php2.sql.DatabaseHelper2;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
@@ -161,7 +162,7 @@ public class first_sound extends AppCompatActivity implements View.OnClickListen
         Date now = new Date();
         String path = Environment.getExternalStorageDirectory()+"/"+"record_"+formatter.format(now)+".wav";;
         Ion.with(this)
-                .load("http://ce3c4a63.ngrok.io/pro-android/sound.php")
+                .load("http://7e98a5bb.ngrok.io/pro-android/sound.php")
                 .setMultipartFile("upload_file", new File(path))
                 .asString()
                 .setCallback(new FutureCallback<String>() {
@@ -178,47 +179,26 @@ public class first_sound extends AppCompatActivity implements View.OnClickListen
     }
 
 
-    DatabaseHelper2 db = new DatabaseHelper2(activity);
-    User user = new User();
+    DatabaseHelper2 db2 = new DatabaseHelper2(activity);
+    DatabaseHelper db1 = new DatabaseHelper(activity);
 
-    public void process(){
+    public void process() {
         Ion.with(this)
-                .load("http://ce3c4a63.ngrok.io/pro-android/sound/first_test.php")
+                .load("http://7e98a5bb.ngrok.io/pro-android/sound/first_test.php")
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override
                     public void onCompleted(Exception e, String result) {
                         double sum = Double.parseDouble(result);
-                        String sum_st = Double.toString(sum);
-                        String name = user.getName();
-                        db.updateDistRc(sum,name);
-                        Intent intent = new Intent(first_sound.this,Main2Activity.class);
+//                        String sum_st = Double.toString(sum);
+//                        String name = user.getName();
+                        db2.updateDistRc(sum, db1.getName());
+                        Intent intent = new Intent(first_sound.this, Main2Activity.class);
                         startActivity(intent);
 
                     }
                 });
 
-
-
-
-    }
-
-
-
-    public boolean test(double dist){
-        if(db.checkRc("yuriyuripps")){
-            if(dist > db.avgSound("yuriyuripps")){
-                return true;
-            }else {
-                return false;
-            }
-        }else {
-            if(dist > 130){
-                return true;
-            }else{
-                return false;
-            }
-        }
 
     }
 }

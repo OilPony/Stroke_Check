@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.test_php2.model.User;
+import com.example.test_php2.sql.DatabaseHelper;
 import com.example.test_php2.sql.DatabaseHelper2;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
@@ -96,12 +97,13 @@ public class first_show_pic_arm extends AppCompatActivity {
         String path = (Environment.getExternalStorageDirectory()+"/"+count_st+".jpg");
         //visitCount++;
         Ion.with(this)
-                .load("http://ce3c4a63.ngrok.io/pro-android/arm.php")
+                .load("http://7e98a5bb.ngrok.io/pro-android/arm.php")
                 .setMultipartFile("upload_file", new File(path))
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override
                     public void onCompleted(Exception e, String result) {
+//                        visitCount++;
                         if(visitCount <= 4){
                             Intent intent = new Intent(first_show_pic_arm.this,first_arm.class);
                             startActivity(intent);
@@ -142,43 +144,26 @@ public class first_show_pic_arm extends AppCompatActivity {
 
 
     DatabaseHelper2 db2 = new DatabaseHelper2(activity);
-    User user = new User();
-    public void process(){
+    DatabaseHelper db1 = new DatabaseHelper(activity);
+    public void process() {
         Ion.with(this)
-                .load("http://ce3c4a63.ngrok.io/pro-android/arm/first_test.php")
+                .load("http://7e98a5bb.ngrok.io/pro-android/arm/first_test.php")
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override
                     public void onCompleted(Exception e, String result) {
                         double sum = Double.parseDouble(result);
-                        String sum_st = Double.toString(sum);
-                        String name = user.getName();
-                        db2.updateDistArm(sum,name);
-                        Toast.makeText(getBaseContext(), sum_st, Toast.LENGTH_LONG).show();
-//                        if(test(dist)){
-//                            db.updateDistSm(dist,"yuriyuripps");
-//                            Intent intent = new Intent(show_pic_smile.this,Risk_smile.class);
-//                            startActivity(intent);
-//                            //Toast.makeText(getBaseContext(), "Risk!!!", Toast.LENGTH_LONG).show();
-//                        }else {
-//                            Intent intent2 = new Intent(show_pic_smile.this,Norisk_smile.class);
-//                            startActivity(intent2);
-//                            //Toast.makeText(getBaseContext(), "Same!!!", Toast.LENGTH_LONG).show();
-//                        }
+                        //String sum_st = Double.toString(sum);
 
-                        //Toast.makeText(getBaseContext(), db.check("yuriyuripps"), Toast.LENGTH_LONG).show();
+                        db2.updateDistArm(sum, db1.getName());
 
-                        Intent intent = new Intent(first_show_pic_arm.this,first_detail_sound.class);
+
+                        Intent intent = new Intent(first_show_pic_arm.this, first_detail_sound.class);
                         startActivity(intent);
 
 
                     }
                 });
-
-
-
-
-
     }
 
 

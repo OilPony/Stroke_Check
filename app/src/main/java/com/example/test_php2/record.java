@@ -17,7 +17,10 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.test_php2.R;
+import com.example.test_php2.model.User;
+import com.example.test_php2.sql.DatabaseHelper;
 import com.example.test_php2.sql.DatabaseHelper2;
+import com.example.test_php2.utils.PreferenceUtils;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 
@@ -160,7 +163,7 @@ public class record extends AppCompatActivity implements View.OnClickListener{
         Date now = new Date();
         String path = Environment.getExternalStorageDirectory()+"/"+"record_"+formatter.format(now)+".wav";;
         Ion.with(this)
-                .load("http://ce3c4a63.ngrok.io/pro-android/sound.php")
+                .load("http://7e98a5bb.ngrok.io/pro-android/sound.php")
                 .setMultipartFile("upload_file", new File(path))
                 .asString()
                 .setCallback(new FutureCallback<String>() {
@@ -173,26 +176,28 @@ public class record extends AppCompatActivity implements View.OnClickListener{
 
 
     DatabaseHelper2 db = new DatabaseHelper2(activity);
+    DatabaseHelper db1 = new DatabaseHelper(activity);
+    User user = new User();
+
+
 
     public void process(){
         Ion.with(this)
-                .load("http://ce3c4a63.ngrok.io/pro-android/sound/test.php")
+                .load("http://7e98a5bb.ngrok.io/pro-android/sound/test.php")
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override
                     public void onCompleted(Exception e, String result) {
                         double dist = Double.parseDouble(result);
 
-
                         if(test(dist)){
-                            db.updateDistRc(dist,"yuriyuripps");
+                            db.updateDistRc(dist,db1.getName());
                             Intent intent = new Intent(record.this,Risk_record.class);
                             startActivity(intent);
-                            //Toast.makeText(getBaseContext(), "Risk!!!", Toast.LENGTH_LONG).show();
+
                         }else {
                             Intent intent2 = new Intent(record.this,Norisk_record.class);
                             startActivity(intent2);
-                            //Toast.makeText(getBaseContext(), "Same!!!", Toast.LENGTH_LONG).show();
                         }
 
 //                        db.updateDistRc(dist,"yuriyuripps");
@@ -204,19 +209,23 @@ public class record extends AppCompatActivity implements View.OnClickListener{
 
     }
 
+
     public boolean test(double dist){
-        if(db.checkRc("yuriyuripps")){
-            if(dist > db.avgSound("yuriyuripps")){
+        if(db.checkRc(db1.getName())){
+            if(dist > db.maxSound(db1.getName())){
                 return true;
             }else {
                 return false;
             }
-        }else {
-            if(dist > 130){
+
+        }
+        else {
+            if(dist > db.firstSound(db1.getName())){
                 return true;
             }else{
                 return false;
             }
+
         }
     }
 

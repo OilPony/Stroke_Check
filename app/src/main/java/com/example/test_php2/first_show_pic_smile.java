@@ -96,7 +96,7 @@ public class first_show_pic_smile extends AppCompatActivity {
         String path = (Environment.getExternalStorageDirectory()+"/"+count_st+".jpg");
         //visitCount++;
         Ion.with(this)
-                .load("http://ce3c4a63.ngrok.io/pro-android/smile.php")
+                .load("http://7e98a5bb.ngrok.io/pro-android/smile.php")
                 .setMultipartFile("upload_file", new File(path))
                 .asString()
                 .setCallback(new FutureCallback<String>() {
@@ -144,32 +144,22 @@ public class first_show_pic_smile extends AppCompatActivity {
     }
 
     DatabaseHelper2 db2 = new DatabaseHelper2(activity);
-    User user = new User();
+    DatabaseHelper db1 = new DatabaseHelper(activity);
+
 
     public void process(){
         Ion.with(this)
-                .load("http://ce3c4a63.ngrok.io/pro-android/smile/first_test.php")
+                .load("http://7e98a5bb.ngrok.io/pro-android/smile/first_test.php")
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override
                     public void onCompleted(Exception e, String result) {
                         double sum = Double.parseDouble(result);
                         String sum_st = Double.toString(sum);
-                        String name = user.getName();
-                        db2.updateDistSm(sum,name);
-                        Toast.makeText(getBaseContext(), sum_st, Toast.LENGTH_LONG).show();
-//                        if(test(dist)){
-//                            db.updateDistSm(dist,"yuriyuripps");
-//                            Intent intent = new Intent(show_pic_smile.this,Risk_smile.class);
-//                            startActivity(intent);
-//                            //Toast.makeText(getBaseContext(), "Risk!!!", Toast.LENGTH_LONG).show();
-//                        }else {
-//                            Intent intent2 = new Intent(show_pic_smile.this,Norisk_smile.class);
-//                            startActivity(intent2);
-//                            //Toast.makeText(getBaseContext(), "Same!!!", Toast.LENGTH_LONG).show();
-//                        }
+//                        String name = db1.getName();
+                        db2.updateDistSm(sum,db1.getName());
+//                        Toast.makeText(getBaseContext(), sum_st, Toast.LENGTH_LONG).show();
 
-                        //Toast.makeText(getBaseContext(), db.check("yuriyuripps"), Toast.LENGTH_LONG).show();
 
                         Intent intent = new Intent(first_show_pic_smile.this,first_detail_arm.class);
                         startActivity(intent);

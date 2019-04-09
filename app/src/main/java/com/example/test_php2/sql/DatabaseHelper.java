@@ -24,6 +24,10 @@ public class DatabaseHelper  extends SQLiteOpenHelper{
     private static final String COLUMN_USER_EMAIL = "user_email";
     private static final String COLUMN_USER_PASSWORD = "user_password";
 
+    private static final String TABLE_RECENT = "recent";
+    private static final String COLUMN_ID = "user_id";
+    private static final String COLUMN_NAME = "user_name";
+
 
     private String CREATE_USER_TABLE = "CREATE TABLE " + TABLE_USER + "("
             + COLUMN_USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_USER_NAME + " TEXT,"
@@ -31,18 +35,32 @@ public class DatabaseHelper  extends SQLiteOpenHelper{
 
     private String DROP_USER_TABLE = "DROP TABLE IF EXISTS " + TABLE_USER;
 
+
+
+//    private static final String TABLE_RECENT = "recent";
+//    private static final String COLUMN_ID = "user_id";
+//    private static final String COLUMN_NAME = "user_name";
+
+    private String CREATE_RECENT_TABLE = "CREATE TABLE " + TABLE_RECENT + "("
+            + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_NAME + " TEXT" + ")";
+
+    private String DROP_RECENT_TABLE = "DROP TABLE IF EXISTS " + TABLE_RECENT;
+
     public DatabaseHelper(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
-
     @Override
     public void onCreate(SQLiteDatabase db){
         db.execSQL(CREATE_USER_TABLE);
+        db.execSQL(CREATE_RECENT_TABLE);
     }
+
+
 
     @Override
     public  void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
         db.execSQL(DROP_USER_TABLE);
+        db.execSQL(DROP_RECENT_TABLE);
         onCreate(db);
     }
 
@@ -55,6 +73,25 @@ public class DatabaseHelper  extends SQLiteOpenHelper{
 
         db.insert(TABLE_USER, null, values);
         db.close();
+    }
+
+    public void add(String name){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_NAME, name);
+        db.insert(TABLE_RECENT, null, values);
+        db.close();
+    }
+
+    public String getName(){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = db.rawQuery("SELECT " + COLUMN_NAME
+                + " FROM " + TABLE_RECENT  , null);
+//        cursor.moveToPosition(1);
+        cursor.moveToLast();
+        String cr = cursor.getString(cursor.getColumnIndex(COLUMN_NAME));
+        return cr;
     }
 
     public void updatePassword(String name, String password){
