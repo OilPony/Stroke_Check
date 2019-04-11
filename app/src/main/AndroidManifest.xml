@@ -83,7 +83,9 @@
         <activity
             android:name=".first_detail_sound"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ngrok"></activity>
+        <activity android:name=".ngrok" />
+        <activity android:name=".Risk_armm" />
+        <activity android:name=".No_riskarmm"></activity>
     </application>
 
 </manifest>

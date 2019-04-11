@@ -97,7 +97,7 @@ public class show_pic_arm extends AppCompatActivity {
         String path = (Environment.getExternalStorageDirectory()+"/"+"arm_"+formatter.format(now)+".jpg");
 
         Ion.with(this)
-                .load("http://7e98a5bb.ngrok.io/pro-android/arm.php")
+                .load("http://357360ef.ngrok.io/pro-android/arm.php")
                 .setMultipartFile("upload_file", new File(path))
                 .asString()
                 .setCallback(new FutureCallback<String>() {
@@ -137,7 +137,7 @@ public class show_pic_arm extends AppCompatActivity {
 
     public void process(){
         Ion.with(this)
-                .load("http://7e98a5bb.ngrok.io/pro-android/arm/test.php")
+                .load("http://357360ef.ngrok.io/pro-android/arm/test.php")
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override
@@ -146,11 +146,11 @@ public class show_pic_arm extends AppCompatActivity {
 
                         if(test(dist)){
 
-                            Intent intent = new Intent(show_pic_arm.this,Risk_record.class);
+                            Intent intent = new Intent(show_pic_arm.this,Risk_armm.class);
                             startActivity(intent);
                         }else{
                             db2.updateDistArm(dist,db1.getName());
-                            Intent intent2 = new Intent(show_pic_arm.this,Norisk_record.class);
+                            Intent intent2 = new Intent(show_pic_arm.this,No_riskarmm.class);
                             startActivity(intent2);
                         }
 
