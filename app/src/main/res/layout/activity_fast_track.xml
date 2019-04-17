@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_liquid"
+    tools:context=".Fast_track">
+
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="318dp"
+        android:layout_height="375dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="96dp"
+        android:background="@android:color/background_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="307dp"
+                android:layout_height="225dp"
+                app:srcCompat="@drawable/fast_track"
+                tools:layout_editor_absoluteX="91dp"
+                tools:layout_editor_absoluteY="85dp" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="\nF = face อาการอ่อนแรงบริเวณใบหน้า ยิ้มเบี้ยว \nA = Arm อาการอ่อนแรงไม่สามารถเกร็งกล้ามเนื้อแขนและขาได้ \nS = Speech อาการพูดไม่ชัด ติดขัด \nT = Time เวลา ควรพบแพทย์เร็วที่สุดเมื่อพบอาการเสี่ยง โดยผู้ใช้งานควรไปพบแพทย์ให้เร็วที่สุดหากพบอาการเสี่ยง 1 ใน 3 ของอาการเสี่ยง \n \nขอบคุณรูปภาพจาก nnt national news bureau of thailand สํานักข่าว กรมประชาสัมพันธ์
+"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="175dp"
+                tools:layout_editor_absoluteY="261dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Fast Track"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/Back_st"
+        android:layout_width="112dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/back_st"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+
+</android.support.constraint.ConstraintLayout>

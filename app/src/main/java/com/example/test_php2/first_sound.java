@@ -162,7 +162,7 @@ public class first_sound extends AppCompatActivity implements View.OnClickListen
         Date now = new Date();
         String path = Environment.getExternalStorageDirectory()+"/"+"record_"+formatter.format(now)+".wav";;
         Ion.with(this)
-                .load("http://357360ef.ngrok.io/pro-android/sound.php")
+                .load("http://90507684.ngrok.io/pro-android/sound.php")
                 .setMultipartFile("upload_file", new File(path))
                 .asString()
                 .setCallback(new FutureCallback<String>() {
@@ -184,7 +184,7 @@ public class first_sound extends AppCompatActivity implements View.OnClickListen
 
     public void process() {
         Ion.with(this)
-                .load("http://357360ef.ngrok.io/pro-android/sound/first_test.php")
+                .load("http://90507684.ngrok.io/pro-android/sound/first_test.php")
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override

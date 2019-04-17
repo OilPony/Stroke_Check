@@ -85,7 +85,11 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ngrok" />
         <activity android:name=".Risk_armm" />
-        <activity android:name=".No_riskarmm"></activity>
+        <activity android:name=".No_riskarmm" />
+        <activity android:name=".Stroke_datail"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".Fast_track"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

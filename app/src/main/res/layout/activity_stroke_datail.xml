@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_liquid"
+    tools:context=".Stroke_datail">
+
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="318dp"
+        android:layout_height="375dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="96dp"
+        android:background="@android:color/background_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="      ในสภาวะปัจจุบัน โรคหลอดเลือดสมอง (Stroke) เป็นปัญหาสาธารณะสุขที่พบได้บ่อยในประชากรทั่วโลก จากสถิติย้อนหลังในปี พ.ศ. 2558 – 2560 ของประเทศไทยพบว่ามีประชากรเสียชีวิตด้วยโรคหลอดเลือดสมองมีแนวโน้มเพิ่มขึ้นในทุกๆปี \n    โรคหลอดเลือดสมอง เกิดจากการที่สมองขาดเลือดไปเลี้ยง โดยแบ่งเป็น 2 ประเภทได้แก่ 1. หลอดเลือดสมองตีบหรืออุดตัน เนื่องจากลิ่มเลือดหรือไขมันในหลอดเลือดไปอุดตันที่หลอดเลือดสมอง 2. หลอดเลือดสมองแตก เนื่องจากหลอดเลือดมีความเปราะบางร่วมด้วยความดันโลหิตสูงหรือเกิดจากไขมันในหลอดเลือดสะสม จึงส่งผลให้หลอดเลือดปริแตก เมื่อขาดเลือดไปเลี้ยงสมองทำให้เนื้อเยื่อสมองถูกทำลาย \n    โดยอาการของโรคจะแสดงมากหรือน้อยนั้นขึ้นอยู่กับความรุนแรงและตำแหน่งสมองที่ถูกทำลาย ตัวอย่างอาการที่สามารถสังเกตได้ง่ายดังนี้ 	1. ผู้ป่วยจะมีอาการชาบริเวณใบหน้าทำให้ไม่สามารถยิ้มได้ปกติส่งผลให้ปากเบี้ยวขณะยิ้ม 2. ลิ้นแข็งทำให้ไม่สามารถพูดได้ชัดเจน 3. แขนและขามีอาการชาหรืออ่อนแรงทำให้ไม่สามารถเกร็งหรือออกแรงควบคุมได้ตามที่ต้องการ"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="175dp"
+                tools:layout_editor_absoluteY="261dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="ความรู้โรคหลอดเลือดสมอง"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/Back_st"
+        android:layout_width="112dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/back_st"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+
+</android.support.constraint.ConstraintLayout>
