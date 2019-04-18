@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.test_php2.R;
 import com.example.test_php2.helper.InputValidation;
@@ -17,6 +18,8 @@ import com.example.test_php2.sql.DatabaseHelper;
 import com.example.test_php2.utils.PreferenceUtils;
 import com.example.test_php2.sql.DatabaseHelper;
 import com.example.test_php2.utils.PreferenceUtils;
+
+import org.w3c.dom.Text;
 
 public class Main2Activity extends AppCompatActivity implements View.OnClickListener {
 
@@ -34,6 +37,8 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
 
     private AppCompatTextView textViewLinkRegister;
 
+    private AppCompatTextView sever;
+
     private InputValidation inputValidation;
     private DatabaseHelper databaseHelper;
 
@@ -42,6 +47,15 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+//        TextView sever = findViewById(R.id.sever);
+//        sever.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(Main2Activity.this,ngrok_login.class);
+//                startActivity(intent);
+//            }
+//        });
         setContentView(R.layout.activity_main2);
         getSupportActionBar().hide();
 
@@ -61,6 +75,9 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
         appCompatButtonLogin = (AppCompatButton) findViewById(R.id.appCompatButtonLogin);
 
         textViewLinkRegister = (AppCompatTextView) findViewById(R.id.textViewLinkRegister);
+
+        sever = (AppCompatTextView) findViewById(R.id.sever);
+
         PreferenceUtils utils = new PreferenceUtils();
 
         if (utils.getName(this) != null ){
@@ -74,6 +91,7 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
     private void initListeners(){
         appCompatButtonLogin.setOnClickListener(this);
         textViewLinkRegister.setOnClickListener(this);
+        sever.setOnClickListener(this);
     }
 
     private void initObjects(){
@@ -90,6 +108,10 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
             case R.id.textViewLinkRegister:
                 Intent intentRegister = new Intent(getApplicationContext(), RegisterActivity.class);
                 startActivity(intentRegister);
+                break;
+            case R.id.sever:
+                Intent intentsever = new Intent(getApplicationContext(), ngrok_login.class);
+                startActivity(intentsever);
                 break;
 
         }

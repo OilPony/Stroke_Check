@@ -202,6 +202,7 @@ public class first_sound extends AppCompatActivity implements View.OnClickListen
                         Intent intent = new Intent(first_sound.this, Main2Activity.class);
                         startActivity(intent);
 
+
                     }
                 });
 

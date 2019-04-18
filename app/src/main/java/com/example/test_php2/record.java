@@ -81,7 +81,7 @@ public class record extends AppCompatActivity implements View.OnClickListener{
                 }
                 break;
             case R.id.button4:
-                up_sound(v);
+                up_sound1(v);
                 break;
             default:
                 break;
@@ -157,23 +157,75 @@ public class record extends AppCompatActivity implements View.OnClickListener{
         next.setEnabled(true);
         Toast.makeText(getApplicationContext(), "Playing audio", Toast.LENGTH_SHORT).show();
     }
-    public void up_sound(View view){
-        Toast.makeText(getBaseContext(), "อัพโหลดไฟล์เสียง", Toast.LENGTH_LONG).show();
+//    public void up_sound(View view){
+//        Toast.makeText(getBaseContext(), "เธญเธฑเธเนเธซเธฅเธ”เนเธเธฅเนเน€เธชเธตเธขเธ", Toast.LENGTH_LONG).show();
+//        SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy", Locale.KOREA);
+//        Date now = new Date();
+//        String path = Environment.getExternalStorageDirectory()+"/"+"record_"+formatter.format(now)+".wav";
+//        String url = db1.getNg()+"/pro-android/sound.php";
+//        Ion.with(this)
+//                .load(url)
+//                .setMultipartFile("upload_file", new File(path))
+//                .asString()
+//                .setCallback(new FutureCallback<String>() {
+//                    @Override
+//                    public void onCompleted(Exception e, String result) {
+//                        process();
+//                    }
+//                });
+//    }
+
+    public void rename(){
         SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy", Locale.KOREA);
         Date now = new Date();
-        String path = Environment.getExternalStorageDirectory()+"/"+"record_"+formatter.format(now)+".wav";
-        String url = db1.getNg()+"/pro-android/sound.php";
+        String name = "record_"+formatter.format(now)+".wav";
+        File sr = Environment.getExternalStorageDirectory();
+        File from = new File(sr,name);
+        File to = new File(sr,db1.getName()+".wav");
+        from.renameTo(to);
+    }
+
+    public void up_sound1(final View view){
+        Toast.makeText(getBaseContext(), "อัพโหลดไล์ 1", Toast.LENGTH_LONG).show();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy", Locale.KOREA);
+        Date now = new Date();
+        String name = (Environment.getExternalStorageDirectory()+"/"+db1.getName()+".wav");
+        String path = (name);
+        String url = db1.getNg()+"/pro-android/sound/upload1.php";
         Ion.with(this)
                 .load(url)
-                .setMultipartFile("upload_file", new File(path))
+                .setMultipartFile("upload_file", new File(name))
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override
                     public void onCompleted(Exception e, String result) {
+
+                        up_sound2(view);
+                    }
+                });
+    }
+
+
+    public void up_sound2(View view){
+        Toast.makeText(getBaseContext(), "อัพโหลดไฟล์ 2", Toast.LENGTH_LONG).show();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy", Locale.KOREA);
+        Date now = new Date();
+        String name = (Environment.getExternalStorageDirectory()+"/"+"record_"+formatter.format(now)+".wav");
+        String path = (name);
+        String url = db1.getNg()+"/pro-android/sound/upload2.php";
+        Ion.with(this)
+                .load(url)
+                .setMultipartFile("upload_file", new File(name))
+                .asString()
+                .setCallback(new FutureCallback<String>() {
+                    @Override
+                    public void onCompleted(Exception e, String result) {
+                        rename();
                         process();
                     }
                 });
     }
+
 
 
     DatabaseHelper2 db = new DatabaseHelper2(activity);
@@ -201,7 +253,6 @@ public class record extends AppCompatActivity implements View.OnClickListener{
                             startActivity(intent2);
                         }
 
-//                        db.updateDistRc(dist,"yuriyuripps");
                     }
                 });
 
@@ -257,4 +308,3 @@ public class record extends AppCompatActivity implements View.OnClickListener{
 //                });
 //    }
 }
-
