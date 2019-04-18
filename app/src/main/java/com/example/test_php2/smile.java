@@ -31,6 +31,7 @@ import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -78,6 +79,16 @@ public class smile extends AppCompatActivity {
         textureView.setSurfaceTextureListener(textureListener);
         takePictureButton = (Button) findViewById(R.id.btn_takepicture);
         assert takePictureButton != null;
+
+        ImageView back = findViewById(R.id.back_cam);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(smile.this,UsersActivity.class);
+                startActivity(intent);
+            }
+        });
+
         takePictureButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

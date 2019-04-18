@@ -6,18 +6,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class ngrok extends AppCompatActivity {
+public class ngrok_regis extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ngrok);
+        setContentView(R.layout.activity_ngrok_regis);
 
-        Button st = findViewById(R.id.ngrokstart);
+        Button st = findViewById(R.id.ngrokregisstart);
         st.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(ngrok.this,UsersActivity.class);
+                Intent i = new Intent(ngrok_regis.this,first_detail_smile.class);
                 startActivity(i);
 
             }

@@ -22,7 +22,7 @@ public class DatabaseHelper2  extends SQLiteOpenHelper {
 
     private static final String COL_ID = "_id";
     private static final String COL_NAME = "name";
-    private static final String COL_DIST = "dist";   
+    private static final String COL_DIST = "dist";
 
     private static final String SQL_CREATE_TABLE_SMILE
             = "CREATE TABLE " + SMILE_TABLE + "("

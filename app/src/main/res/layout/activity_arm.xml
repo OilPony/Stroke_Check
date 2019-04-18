@@ -38,4 +38,14 @@
         android:layout_marginTop="188dp"
         app:srcCompat="@drawable/re3" />
 
+    <ImageView
+        android:id="@+id/back_cam"
+        android:layout_width="34dp"
+        android:layout_height="47dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        app:srcCompat="@drawable/arrow" />
+
 </RelativeLayout>

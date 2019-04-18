@@ -84,6 +84,24 @@ public class UsersActivity extends AppCompatActivity {
             }
         });
 
+        ImageView ng_img = findViewById(R.id.imageView10);
+        ng_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(UsersActivity.this,ngrok.class);
+                startActivity(i);
+            }
+        });
+
+        TextView ngrok = findViewById(R.id.textView5);
+        ngrok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(UsersActivity.this,ngrok.class);
+                startActivity(i);
+            }
+        });
+
 
 
     }
