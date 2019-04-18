@@ -33,6 +33,7 @@ import java.util.Locale;
 public class first_show_pic_arm extends AppCompatActivity {
     private final AppCompatActivity activity = first_show_pic_arm.this;
     static int visitCount = 0;
+    static int visitNext = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,11 +54,25 @@ public class first_show_pic_arm extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 resizeImage();
+                renameSend();
                 up_pic();
             }
         });
 
 
+    }
+
+    public void renameSend(){
+        visitNext++;
+        SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy", Locale.KOREA);
+        Date now = new Date();
+        String count_st = Integer.toString(visitCount);
+        String name = count_st+".jpg";
+        File sr = Environment.getExternalStorageDirectory();
+        String count = Integer.toString(visitNext);
+        File from = new File(sr,name);
+        File to = new File(sr,count+".jpg");
+        from.renameTo(to);
     }
 
     public void resizeImage(){
@@ -93,18 +108,19 @@ public class first_show_pic_arm extends AppCompatActivity {
         //String path = Environment.getExternalStorageDirectory() + "/pic_smile.jpg";
         SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy", Locale.KOREA);
         Date now = new Date();
-        String count_st = Integer.toString(visitCount);
+        String count_st = Integer.toString(visitNext);
         String path = (Environment.getExternalStorageDirectory()+"/"+count_st+".jpg");
+        String url = db1.getNg()+"/pro-android/arm.php";
         //visitCount++;
         Ion.with(this)
-                .load("http://a40e90a2.ngrok.io/pro-android/arm.php")
+                .load(url)
                 .setMultipartFile("upload_file", new File(path))
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override
                     public void onCompleted(Exception e, String result) {
 //                        visitCount++;
-                        if(visitCount <= 4){
+                        if(visitNext <= 4){
                             Intent intent = new Intent(first_show_pic_arm.this,first_arm.class);
                             startActivity(intent);
                         }
@@ -146,8 +162,9 @@ public class first_show_pic_arm extends AppCompatActivity {
     DatabaseHelper2 db2 = new DatabaseHelper2(activity);
     DatabaseHelper db1 = new DatabaseHelper(activity);
     public void process() {
+        String url = db1.getNg()+"/pro-android/arm/first_test.php";
         Ion.with(this)
-                .load("http://a40e90a2.ngrok.io/pro-android/arm/first_test.php")
+                .load(url)
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override

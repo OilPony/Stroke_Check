@@ -161,9 +161,10 @@ public class record extends AppCompatActivity implements View.OnClickListener{
         Toast.makeText(getBaseContext(), "อัพโหลดไฟล์เสียง", Toast.LENGTH_LONG).show();
         SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy", Locale.KOREA);
         Date now = new Date();
-        String path = Environment.getExternalStorageDirectory()+"/"+"record_"+formatter.format(now)+".wav";;
+        String path = Environment.getExternalStorageDirectory()+"/"+"record_"+formatter.format(now)+".wav";
+        String url = db1.getNg()+"/pro-android/sound.php";
         Ion.with(this)
-                .load("http://a40e90a2.ngrok.io/pro-android/sound.php")
+                .load(url)
                 .setMultipartFile("upload_file", new File(path))
                 .asString()
                 .setCallback(new FutureCallback<String>() {
@@ -181,8 +182,9 @@ public class record extends AppCompatActivity implements View.OnClickListener{
 
 
     public void process(){
+        String url = db1.getNg()+"/pro-android/sound/test.php";
         Ion.with(this)
-                .load("http://a40e90a2.ngrok.io/pro-android/sound/test.php")
+                .load(url)
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override
