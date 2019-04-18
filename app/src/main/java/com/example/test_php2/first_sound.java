@@ -175,8 +175,8 @@ public class first_sound extends AppCompatActivity implements View.OnClickListen
                     @Override
                     public void onCompleted(Exception e, String result) {
                         if(visitNext > 4){
+                            renameone();
                             process();
-
                         }
 
                     }
