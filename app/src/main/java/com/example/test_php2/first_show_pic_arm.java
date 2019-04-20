@@ -53,6 +53,9 @@ public class first_show_pic_arm extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String toast_count = Integer.toString(visitNext+1);
+                String toast_count2 = "กำลังอัพโหลดรูปที่"+toast_count+"กรุณารอสักครู่";
+                Toast.makeText(getBaseContext(), toast_count2, Toast.LENGTH_LONG).show();
                 resizeImage();
                 renameSend();
                 up_pic();
@@ -104,7 +107,7 @@ public class first_show_pic_arm extends AppCompatActivity {
 
 
     public void up_pic(){
-        Toast.makeText(getBaseContext(), "อัพโหลดรูป", Toast.LENGTH_LONG).show();
+        //Toast.makeText(getBaseContext(), "อัพโหลดรูป", Toast.LENGTH_LONG).show();
         //String path = Environment.getExternalStorageDirectory() + "/pic_smile.jpg";
         SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy", Locale.KOREA);
         Date now = new Date();
@@ -125,6 +128,7 @@ public class first_show_pic_arm extends AppCompatActivity {
                             startActivity(intent);
                         }
                         else {
+                            visitNext = 0;
                             process();
                         }
                     }
@@ -162,6 +166,7 @@ public class first_show_pic_arm extends AppCompatActivity {
     DatabaseHelper2 db2 = new DatabaseHelper2(activity);
     DatabaseHelper db1 = new DatabaseHelper(activity);
     public void process() {
+        Toast.makeText(getBaseContext(), "กำลังประมวลผลกรุณารอสักครู่", Toast.LENGTH_LONG).show();
         String url = db1.getNg()+"/pro-android/arm/first_test.php";
         Ion.with(this)
                 .load(url)

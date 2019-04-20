@@ -186,7 +186,7 @@ public class record extends AppCompatActivity implements View.OnClickListener{
     }
 
     public void up_sound1(final View view){
-        Toast.makeText(getBaseContext(), "อัพโหลดไล์ 1", Toast.LENGTH_LONG).show();
+        Toast.makeText(getBaseContext(), "ระบบกำลังประมวลผลกรุณารอสักครู่", Toast.LENGTH_LONG).show();
         SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy", Locale.KOREA);
         Date now = new Date();
         String name = (Environment.getExternalStorageDirectory()+"/"+db1.getName()+".wav");
@@ -207,7 +207,7 @@ public class record extends AppCompatActivity implements View.OnClickListener{
 
 
     public void up_sound2(View view){
-        Toast.makeText(getBaseContext(), "อัพโหลดไฟล์ 2", Toast.LENGTH_LONG).show();
+        //Toast.makeText(getBaseContext(), "อัพโหลดไฟล์ 2", Toast.LENGTH_LONG).show();
         SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy", Locale.KOREA);
         Date now = new Date();
         String name = (Environment.getExternalStorageDirectory()+"/"+"record_"+formatter.format(now)+".wav");
@@ -234,6 +234,7 @@ public class record extends AppCompatActivity implements View.OnClickListener{
 
 
     public void process(){
+        //Toast.makeText(getBaseContext(), "ระบบกำลังประมวลผลกรุณารอสักครู่", Toast.LENGTH_LONG).show();
         String url = db1.getNg()+"/pro-android/sound/test.php";
         Ion.with(this)
                 .load(url)

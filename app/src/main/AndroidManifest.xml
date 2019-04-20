@@ -92,7 +92,8 @@
         <activity
             android:name=".Fast_track"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ngrok_login"></activity>
+        <activity android:name=".ngrok_login" />
+        <activity android:name=".ngrok_regis"></activity>
     </application>
 
 </manifest>

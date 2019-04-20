@@ -161,7 +161,9 @@ public class first_sound extends AppCompatActivity implements View.OnClickListen
     }
     public void up_sound(View view){
         renameSend();
-        Toast.makeText(getBaseContext(), "อัพโหลดไฟล์เสียง", Toast.LENGTH_LONG).show();
+        String toast_count = Integer.toString(visitNext);
+        String toast_count2 = "กำลังอัพโหลดไฟล์เสียงรอบที่"+toast_count+"กรุณารอสักครู่";
+        Toast.makeText(getBaseContext(), toast_count2, Toast.LENGTH_LONG).show();
         SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy", Locale.KOREA);
         Date now = new Date();
         String count = Integer.toString(visitNext);
@@ -174,7 +176,12 @@ public class first_sound extends AppCompatActivity implements View.OnClickListen
                 .setCallback(new FutureCallback<String>() {
                     @Override
                     public void onCompleted(Exception e, String result) {
+                        String toast_count = Integer.toString(visitNext);
+                        String toast_count2 = "ส่งไฟล์เสียงรอบที่"+toast_count+"สำเร็จ";
+                        Toast.makeText(getBaseContext(), toast_count2, Toast.LENGTH_LONG).show();
                         if(visitNext > 4){
+                            visitNext = 0;
+                            Toast.makeText(getBaseContext(), "รอสักครู่ระบบกำลังประมวลผล", Toast.LENGTH_LONG).show();
                             renameone();
                             process();
                         }

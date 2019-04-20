@@ -35,6 +35,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private TextInputEditText textInputEditTextEmail;
     private TextInputEditText textInputEditTextPassword;
 
+    private AppCompatTextView sever;
+
     private AppCompatButton appCompatButtonRegister;
     private AppCompatTextView appCompatTextViewLoginLink;
 
@@ -67,11 +69,13 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         appCompatButtonRegister = (AppCompatButton) findViewById(R.id.appCompatButtonRegister);
 
         appCompatTextViewLoginLink = (AppCompatTextView) findViewById(R.id.appCompatTextViewLoginLink);
+        sever = (AppCompatTextView) findViewById(R.id.sever2);
     }
 
     private void initListeners(){
         appCompatButtonRegister.setOnClickListener(this);
         appCompatTextViewLoginLink.setOnClickListener(this);
+        sever.setOnClickListener(this);
     }
 
     private void initObjects(){
@@ -88,6 +92,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.appCompatTextViewLoginLink:
                 finish();
+                break;
+            case R.id.sever2:
+                Intent intentsever = new Intent(getApplicationContext(), ngrok_regis.class);
+                startActivity(intentsever);
                 break;
         }
     }

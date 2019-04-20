@@ -98,7 +98,7 @@ public class show_pic_smile extends PermissionActivity {
     }
 
     public void up_pic(){
-        Toast.makeText(getBaseContext(), "อัพโหลดรูป", Toast.LENGTH_LONG).show();
+        Toast.makeText(getBaseContext(), "กำลังอัพโหลดรูปและประมวลผลกรุณารอสักครู่", Toast.LENGTH_LONG).show();
         //String path = Environment.getExternalStorageDirectory() + "/pic_smile.jpg";
         SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy", Locale.KOREA);
         Date now = new Date();

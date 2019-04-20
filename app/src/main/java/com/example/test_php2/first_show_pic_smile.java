@@ -53,6 +53,9 @@ public class first_show_pic_smile extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String toast_count = Integer.toString(visitNext+1);
+                String toast_count2 = "กำลังอัพโหลดรูปที่"+toast_count+"กรุณารอสักครู่";
+                Toast.makeText(getBaseContext(), toast_count2, Toast.LENGTH_LONG).show();
                 resizeImage();
                 renameSend();
                 up_pic();
@@ -104,7 +107,7 @@ public class first_show_pic_smile extends AppCompatActivity {
     }
 
     public void up_pic(){
-        Toast.makeText(getBaseContext(), "อัพโหลดรูป", Toast.LENGTH_LONG).show();
+        //Toast.makeText(getBaseContext(), "อัพโหลดรูป", Toast.LENGTH_LONG).show();
         //String path = Environment.getExternalStorageDirectory() + "/pic_smile.jpg";
         SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy", Locale.KOREA);
         Date now = new Date();
@@ -125,6 +128,7 @@ public class first_show_pic_smile extends AppCompatActivity {
                         }
 
                         else {
+                            visitNext = 0;
                             process();
 //                            Intent intent = new Intent(first_show_pic_smile.this,first_arm.class);
 //                            startActivity(intent);
@@ -165,6 +169,7 @@ public class first_show_pic_smile extends AppCompatActivity {
 
 
     public void process(){
+        Toast.makeText(getBaseContext(), "กำลังประมวลผลกรุณารอสักครู่", Toast.LENGTH_LONG).show();
         String url = db1.getNg()+"/pro-android/smile/first_test.php";
         Ion.with(this)
                 .load(url)
