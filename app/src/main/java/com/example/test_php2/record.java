@@ -186,6 +186,10 @@ public class record extends AppCompatActivity implements View.OnClickListener{
     }
 
     public void up_sound1(final View view){
+        start.setEnabled(false);
+        stop.setEnabled(false);
+        play.setEnabled(false);
+        next.setEnabled(false);
         Toast.makeText(getBaseContext(), "ระบบกำลังประมวลผลกรุณารอสักครู่", Toast.LENGTH_LONG).show();
         SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy", Locale.KOREA);
         Date now = new Date();
