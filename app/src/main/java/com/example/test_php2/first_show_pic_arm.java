@@ -89,7 +89,7 @@ public class first_show_pic_arm extends AppCompatActivity {
         Bitmap photo = BitmapFactory.decodeFile(Newpath);
         photo = Bitmap.createScaledBitmap(photo,480,640,false);
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-        photo.compress(Bitmap.CompressFormat.JPEG, 80,bytes);
+        photo.compress(Bitmap.CompressFormat.JPEG, 100,bytes);
 
         File f = new File(Newpath);
         try {
