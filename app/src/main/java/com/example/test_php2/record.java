@@ -64,6 +64,13 @@ public class record extends AppCompatActivity implements View.OnClickListener{
         next.setEnabled(false);
 
         ImageView back = findViewById(R.id.back_cam);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(record.this,UsersActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
     }

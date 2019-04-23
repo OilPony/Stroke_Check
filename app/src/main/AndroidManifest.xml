@@ -13,7 +13,7 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo_app"
-        android:label="@string/app_name"
+        android:label="Stroke"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -85,7 +85,10 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ngrok" />
         <activity android:name=".Risk_armm" />
-        <activity android:name=".No_riskarmm" />
+
+        <activity android:name=".No_riskarmm"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
         <activity
             android:name=".Stroke_datail"
             android:theme="@style/AppTheme.NoActionBar" />

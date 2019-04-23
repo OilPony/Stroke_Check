@@ -20,6 +20,23 @@ public class Norisk_smile extends AppCompatActivity {
             }
         });
 
+        Button sm = findViewById(R.id.smile_bt);
+        sm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Norisk_smile.this,arm.class);
+                startActivity(intent);
+            }
+        });
+        Button sound = findViewById(R.id.sound_bt);
+        sound.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Norisk_smile.this,record.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
 }

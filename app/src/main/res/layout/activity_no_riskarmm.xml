@@ -19,7 +19,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.22000003"
         app:srcCompat="@drawable/result_show" />
 
     <ImageView
@@ -35,8 +35,8 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="211dp"
-        android:layout_height="167dp"
+        android:layout_width="215dp"
+        android:layout_height="123dp"
         android:layout_marginTop="8dp"
         android:text="ไม่พบโอกาสเสี่ยงเป็นโรคหลอดเลือดสมองเนื่องจากสามารถเกร็งแขนได้ถูกต้อง"
         android:textAlignment="center"

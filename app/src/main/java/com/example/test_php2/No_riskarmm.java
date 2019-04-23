@@ -22,7 +22,7 @@ public class No_riskarmm extends AppCompatActivity {
             }
         });
         Button sm = findViewById(R.id.smile_bt);
-        back.setOnClickListener(new View.OnClickListener() {
+        sm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(No_riskarmm.this,smile.class);
@@ -30,10 +30,10 @@ public class No_riskarmm extends AppCompatActivity {
             }
         });
         Button sound = findViewById(R.id.sound_bt);
-        back.setOnClickListener(new View.OnClickListener() {
+        sound.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(No_riskarmm.this,arm.class);
+                Intent intent = new Intent(No_riskarmm.this,record.class);
                 startActivity(intent);
             }
         });
