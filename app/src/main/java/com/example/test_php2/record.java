@@ -14,6 +14,7 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.test_php2.R;
@@ -61,6 +62,9 @@ public class record extends AppCompatActivity implements View.OnClickListener{
         stop.setEnabled(false);
         play.setEnabled(false);
         next.setEnabled(false);
+
+        ImageView back = findViewById(R.id.back_cam);
+
 
     }
     @Override public void onClick(View v){

@@ -21,5 +21,21 @@ public class No_riskarmm extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        Button sm = findViewById(R.id.smile_bt);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(No_riskarmm.this,smile.class);
+                startActivity(intent);
+            }
+        });
+        Button sound = findViewById(R.id.sound_bt);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(No_riskarmm.this,arm.class);
+                startActivity(intent);
+            }
+        });
     }
 }

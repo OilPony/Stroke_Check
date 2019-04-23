@@ -6,7 +6,15 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_gra"
     tools:context=".record">
-
+    <ImageView
+        android:id="@+id/back_cam"
+        android:layout_width="34dp"
+        android:layout_height="47dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        app:srcCompat="@drawable/arrow" />
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="271dp"
