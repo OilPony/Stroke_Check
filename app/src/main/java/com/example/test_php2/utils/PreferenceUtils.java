@@ -40,4 +40,19 @@ public class PreferenceUtils {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         return prefs.getString(Constants.KEY_PASSWORD, null);
     }
+
+    public static boolean saveName2(String name, Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor prefsEditor = prefs.edit();
+        prefsEditor.putString(Constants.KEY_NAME, name);
+        prefsEditor.apply();
+        return true;
+    }
+    public static boolean savePassword2(String password, Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor prefsEditor = prefs.edit();
+        prefsEditor.putString(Constants.KEY_PASSWORD, password);
+        prefsEditor.apply();
+        return true;
+    }
 }

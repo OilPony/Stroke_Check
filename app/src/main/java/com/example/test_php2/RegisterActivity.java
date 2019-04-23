@@ -1,5 +1,6 @@
 package com.example.test_php2;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -17,6 +18,9 @@ import com.example.test_php2.model.User;
 import com.example.test_php2.sql.DatabaseHelper;
 import com.example.test_php2.helper.InputValidation;
 import com.example.test_php2.sql.DatabaseHelper;
+import com.example.test_php2.utils.PreferenceUtils;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AlertDialog;
 
 /**
  * Created by delaroy on 3/27/17.
@@ -115,6 +119,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }
 
         String name = textInputEditTextName.getText().toString().trim();
+        String password = textInputEditTextPassword.getText().toString().trim();
         if (!databaseHelper.checkUser(textInputEditTextName.getText().toString().trim())) {
 
             user.setName(textInputEditTextName.getText().toString().trim());
@@ -123,13 +128,28 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
             databaseHelper.addUser(user);
             databaseHelper.add(name);
+            PreferenceUtils.saveName(name, this);
+            databaseHelper.add(name);
+            PreferenceUtils.savePassword(password, this);
 
-            // Snack Bar to show success message that record saved successfully
-            Snackbar.make(nestedScrollView, getString(R.string.success_message), Snackbar.LENGTH_LONG).show();
-            emptyInputEditText();
-            Intent intent = new Intent(RegisterActivity.this, first_detail_smile.class);
-            startActivity(intent);
-            finish();
+            AlertDialog.Builder dialog = new AlertDialog.Builder(RegisterActivity.this);
+            dialog.setTitle("การสมัครสมาชิก");
+            dialog.setMessage("สมัครสมาชิกสำเร็จ");
+            dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Intent intent = new Intent(RegisterActivity.this, first_detail_smile.class);
+                    startActivity(intent);
+                    finish();
+                }
+            });
+            //dialog.setNegativeButton("Exit",null);
+            dialog.setCancelable(false);
+            dialog.show();
+
+//            Intent intent = new Intent(RegisterActivity.this, first_detail_smile.class);
+//            startActivity(intent);
+//            finish();
 
 
         } else {
@@ -138,6 +158,37 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }
 
 
+    }
+
+    private void verifyFromSQLite(){
+//        if (!inputValidation.isInputEditTextFilled(textInputEditTextEmail, textInputLayoutName, getString(R.string.error_message_email))) {
+//            return;
+//        }
+////        if (!inputValidation.isInputEditTextEmail(textInputEditTextEmail, textInputLayoutEmail, getString(R.string.error_message_email))) {
+////            return;
+////        }
+//        if (!inputValidation.isInputEditTextFilled(textInputEditTextPassword, textInputLayoutPassword, getString(R.string.error_message_email))) {
+//            return;
+//        }
+        String name = textInputEditTextEmail.getText().toString().trim();
+        String password = textInputEditTextPassword.getText().toString().trim();
+
+        if (databaseHelper.checkUser(name, password)) {
+            PreferenceUtils.saveName(name, this);
+            databaseHelper.add(name);
+            PreferenceUtils.savePassword(password, this);
+            Intent accountsIntent = new Intent(activity, UsersActivity.class);
+            accountsIntent.putExtra("EMAIL", textInputEditTextEmail.getText().toString().trim());
+            //emptyInputEditText();
+
+            startActivity(accountsIntent);
+            finish();
+
+
+
+        } else {
+            Snackbar.make(nestedScrollView, getString(R.string.error_valid_email_password), Snackbar.LENGTH_LONG).show();
+        }
     }
 
     private void emptyInputEditText(){

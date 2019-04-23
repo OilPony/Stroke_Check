@@ -12,12 +12,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.test_php2.R;
+import com.example.test_php2.sql.DatabaseHelper;
 import com.example.test_php2.utils.PreferenceUtils;
 
 /**
  * Created by delaroy on 3/27/17.
  */
 public class UsersActivity extends AppCompatActivity {
+    private final AppCompatActivity activity = UsersActivity.this;
 
     private TextView textViewName;
     //public String email = PreferenceUtils.getName(this);
@@ -31,9 +33,11 @@ public class UsersActivity extends AppCompatActivity {
         if (intent.hasExtra("EMAIL")){
             String nameFromIntent = getIntent().getStringExtra("EMAIL");
             textViewName.setText("Welcome " + nameFromIntent);
+            //textViewName.setText("Welcome " + db1.getName());
         }else{
             String email = PreferenceUtils.getName(this);
             textViewName.setText("Welcome " + email);
+            //textViewName.setText("Welcome " + db1.getName());
 
         }
 
@@ -105,6 +109,7 @@ public class UsersActivity extends AppCompatActivity {
 
 
     }
+    DatabaseHelper db1 = new DatabaseHelper(activity);
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

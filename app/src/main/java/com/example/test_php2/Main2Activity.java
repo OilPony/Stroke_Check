@@ -136,7 +136,7 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
             PreferenceUtils.savePassword(password, this);
             Intent accountsIntent = new Intent(activity, UsersActivity.class);
             accountsIntent.putExtra("EMAIL", textInputEditTextEmail.getText().toString().trim());
-            emptyInputEditText();
+            //emptyInputEditText();
 
             startActivity(accountsIntent);
             finish();
