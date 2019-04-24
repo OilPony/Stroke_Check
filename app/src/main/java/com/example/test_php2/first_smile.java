@@ -31,6 +31,7 @@ import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -50,6 +51,8 @@ public class first_smile extends AppCompatActivity {
     private static final String TAG = "smile";
     private Button takePictureButton;
     private TextureView textureView;
+    private TextView textureR;
+
     //int count = 0;
     private static final SparseIntArray ORIENTATIONS = new SparseIntArray();
     static {
@@ -77,6 +80,14 @@ public class first_smile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_smile);
         textureView = (TextureView) findViewById(R.id.texture);
+
+        first_show_pic_smile round = new first_show_pic_smile();
+        round.Round();
+
+        textureR = (TextView) findViewById(R.id.textView11);
+        textureR.setText("vvvvvvvvvv"+round.Round());
+
+
         assert textureView != null;
         textureView.setSurfaceTextureListener(textureListener);
         takePictureButton = (Button) findViewById(R.id.btn_takepicture);

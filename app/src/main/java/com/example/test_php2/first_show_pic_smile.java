@@ -34,6 +34,7 @@ public class first_show_pic_smile extends AppCompatActivity {
     private final AppCompatActivity activity = first_show_pic_smile.this;
     static int visitCount = 0;
     static int visitNext = 0;
+    private int round = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +59,7 @@ public class first_show_pic_smile extends AppCompatActivity {
                 Toast.makeText(getBaseContext(), toast_count2, Toast.LENGTH_LONG).show();
                 resizeImage();
                 renameSend();
+                //Round();
                 up_pic();
             }
         });
@@ -76,6 +78,11 @@ public class first_show_pic_smile extends AppCompatActivity {
         File from = new File(sr,name);
         File to = new File(sr,count+".jpg");
         from.renameTo(to);
+    }
+
+    public int Round(){
+        round = visitNext;
+        return round;
     }
 
     public void resizeImage(){
