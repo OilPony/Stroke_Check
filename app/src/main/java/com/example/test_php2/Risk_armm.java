@@ -21,5 +21,22 @@ public class Risk_armm extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button sm = findViewById(R.id.smile_bt);
+        sm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Risk_armm.this,smile.class);
+                startActivity(intent);
+            }
+        });
+        Button sound = findViewById(R.id.sound_bt);
+        sound.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Risk_armm.this,record.class);
+                startActivity(intent);
+            }
+        });
     }
 }
