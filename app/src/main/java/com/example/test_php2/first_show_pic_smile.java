@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.test_php2.model.User;
@@ -35,10 +36,15 @@ public class first_show_pic_smile extends AppCompatActivity {
     static int visitCount = 0;
     static int visitNext = 0;
     private int round = 0;
+    private TextView textureR;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_show_pic_smile);
+
+        textureR = (TextView) findViewById(R.id.textView9);
+        textureR.setText("รอบที่ "+Round());
+
         re_pic();
 
         Button cancle = findViewById(R.id.cn);
@@ -82,7 +88,7 @@ public class first_show_pic_smile extends AppCompatActivity {
 
     public int Round(){
         round = visitNext;
-        return round;
+        return round+1;
     }
 
     public void resizeImage(){

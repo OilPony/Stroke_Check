@@ -38,6 +38,17 @@
         android:layout_marginTop="188dp"
         app:srcCompat="@drawable/re3" />
 
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/btn_takepicture"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="-4dp"
+        android:layout_marginTop="23dp"
+        android:textColor="@color/colorText"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
 
 </RelativeLayout>

@@ -85,7 +85,7 @@ public class first_smile extends AppCompatActivity {
         round.Round();
 
         textureR = (TextView) findViewById(R.id.textView11);
-        textureR.setText("vvvvvvvvvv"+round.Round());
+        textureR.setText("รอบที่ "+round.Round());
 
 
         assert textureView != null;
