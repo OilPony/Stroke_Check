@@ -32,7 +32,7 @@ public class first_detail_sound extends AppCompatActivity {
                 AlertDialog.Builder dialog = new AlertDialog.Builder(first_detail_sound.this);
                 dialog.setTitle("การบันทักค่า");
                 dialog.setMessage("บันทึกค่าสำเร็จ");
-                dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                dialog.setPositiveButton("ตกลง", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent = new Intent(first_detail_sound.this, UsersActivity.class);

@@ -251,7 +251,7 @@ public class first_sound extends AppCompatActivity implements View.OnClickListen
                         AlertDialog.Builder dialog = new AlertDialog.Builder(first_sound.this);
                         dialog.setTitle("การบันทักค่า");
                         dialog.setMessage("บันทึกค่าสำเร็จ");
-                        dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        dialog.setPositiveButton("ตกลง", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 mWaitingDialog.dismiss();

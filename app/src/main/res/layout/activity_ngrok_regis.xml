@@ -28,7 +28,7 @@
                 android:id="@+id/textInputEditTextNgrok2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Ngrok"
+                android:hint="กรุณาใส่ URL"
                 android:inputType="text"
                 android:maxLines="1"
                 android:textColor="@color/colorText" />
@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:background="@color/colorTextHint"
-            android:text="Start"
+            android:text="ตกลง"
             android:textColor="@color/colorText" />
 
 

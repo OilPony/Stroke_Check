@@ -42,7 +42,7 @@
                 android:id="@+id/textInputEditTextName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/hint_name"
+                android:hint="ชื่อ"
                 android:inputType="text"
                 android:maxLines="1"
                 android:textColor="@color/colorText" />
@@ -68,7 +68,7 @@
                 android:id="@+id/textInputEditTextPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/hint_password"
+                android:hint="รหัสผ่าน"
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:textColor="@color/colorText" />
@@ -89,7 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:background="@color/colorTextHint"
-            android:text="@string/text_register"
+            android:text="สมัครสมาชิก"
             android:textColor="@color/colorText" />
 
         <android.support.v7.widget.AppCompatTextView
@@ -98,7 +98,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:gravity="center"
-            android:text="@string/text_member"
+            android:text="มีบัญชีอยู่แล้ว? กรุณาเข้าสู่ระบบ"
             android:textColor="@color/colorText"
             android:textSize="16sp" />
 

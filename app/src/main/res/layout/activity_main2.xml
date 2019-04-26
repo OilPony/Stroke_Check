@@ -47,7 +47,7 @@
                 android:id="@+id/textInputEditTextEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/hint_name"
+                android:hint="ชื่อ"
                 android:inputType="text"
                 android:maxLines="1"
                 android:textColor="@color/colorText" />
@@ -64,7 +64,7 @@
                 android:id="@+id/textInputEditTextPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/hint_password"
+                android:hint="รหัสผ่าน"
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:textColor="@color/colorText" />
@@ -76,7 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:background="@color/colorTextHint"
-            android:text="@string/text_login"
+            android:text="เข้าสู่ระบบ"
             android:textColor="@color/colorText" />
 
 
@@ -87,7 +87,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:gravity="center"
-            android:text="@string/text_not_member"
+            android:text="ไม่มีบัญชี? กรุณาสมัครสมาชิก"
             android:textColor="@color/colorText"
             android:textSize="16sp" />
 
