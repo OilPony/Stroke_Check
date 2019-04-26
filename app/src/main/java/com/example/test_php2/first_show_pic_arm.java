@@ -44,7 +44,7 @@ public class first_show_pic_arm extends AppCompatActivity {
 
         textureR = (TextView) findViewById(R.id.textView9);
         textureR.setText("รอบที่ "+Round());
-        
+
         re_pic();
 
         Button cancle = findViewById(R.id.cn);

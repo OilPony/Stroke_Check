@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AlertDialog;
@@ -36,6 +37,8 @@ public class first_sound extends AppCompatActivity implements View.OnClickListen
 
     public static final int RECORD_AUDIO = 0;
     private MediaRecorder myAudioRecorder;
+    private TextView textureR;
+    private int round = 0;
     private String output = null;
     private Button start, stop, play,next;
     private boolean permissionToRecordAccepted = false;
@@ -46,6 +49,9 @@ public class first_sound extends AppCompatActivity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_sound);
+
+        textureR = (TextView) findViewById(R.id.textView9);
+        textureR.setText("รอบที่ "+Round());
 
         int requestCode = 200;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -183,6 +189,10 @@ public class first_sound extends AppCompatActivity implements View.OnClickListen
                 .setCallback(new FutureCallback<String>() {
                     @Override
                     public void onCompleted(Exception e, String result) {
+                        if(visitNext <=4){
+                            textureR.setText("รอบที่ "+Round());
+                        }
+
                         String toast_count = Integer.toString(visitNext);
                         String toast_count2 = "ส่งไฟล์เสียงรอบที่"+toast_count+"สำเร็จ";
                         start.setEnabled(true);
@@ -200,6 +210,11 @@ public class first_sound extends AppCompatActivity implements View.OnClickListen
 
                     }
                 });
+    }
+
+    public int Round(){
+        round = visitNext;
+        return round+1;
     }
 
 
