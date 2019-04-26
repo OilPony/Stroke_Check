@@ -95,6 +95,7 @@ public class first_smile extends AppCompatActivity {
         takePictureButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                takePictureButton.setEnabled(false);
                 takePicture();
             }
         });

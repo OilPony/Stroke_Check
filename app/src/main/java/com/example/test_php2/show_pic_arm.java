@@ -30,9 +30,11 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import android.app.ProgressDialog;
 
 public class show_pic_arm extends AppCompatActivity {
     private final AppCompatActivity activity = show_pic_arm.this;
+    ProgressDialog mWaitingDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +57,7 @@ public class show_pic_arm extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mWaitingDialog = ProgressDialog.show(show_pic_arm.this, "ระบบกำลังประมวลผล", "กำลังโหลด...", true);
                 resizeImage();
                 up_pic();
             }
@@ -90,7 +93,7 @@ public class show_pic_arm extends AppCompatActivity {
     }
 
     public void up_pic(){
-        Toast.makeText(getBaseContext(), "กำลังอัพโหลดรูปและประมวลผลกรุณารอสักครู่", Toast.LENGTH_LONG).show();
+        //Toast.makeText(getBaseContext(), "กำลังอัพโหลดรูปและประมวลผลกรุณารอสักครู่", Toast.LENGTH_LONG).show();
         //String path = Environment.getExternalStorageDirectory() + "/pic_arm.jpg";
         SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy", Locale.KOREA);
         Date now = new Date();

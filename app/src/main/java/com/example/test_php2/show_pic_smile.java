@@ -33,12 +33,14 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import android.app.ProgressDialog;
 
 import com.example.test_php2.sql.DatabaseHelper;
 public class show_pic_smile extends PermissionActivity {
     private final AppCompatActivity activity = show_pic_smile.this;
     private boolean mIsUploading = false;
     private DatabaseHelper dbuser;
+    ProgressDialog mWaitingDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +65,7 @@ public class show_pic_smile extends PermissionActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mWaitingDialog = ProgressDialog.show(show_pic_smile.this, "ระบบกำลังประมวลผล", "กำลังโหลด...", true);
                 resizeImage();
                 up_pic();
             }
@@ -98,7 +101,7 @@ public class show_pic_smile extends PermissionActivity {
     }
 
     public void up_pic(){
-        Toast.makeText(getBaseContext(), "กำลังอัพโหลดรูปและประมวลผลกรุณารอสักครู่", Toast.LENGTH_LONG).show();
+        //Toast.makeText(getBaseContext(), "กำลังอัพโหลดรูปและประมวลผลกรุณารอสักครู่", Toast.LENGTH_SHORT).show();
         //String path = Environment.getExternalStorageDirectory() + "/pic_smile.jpg";
         SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy", Locale.KOREA);
         Date now = new Date();

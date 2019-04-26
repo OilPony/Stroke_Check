@@ -28,6 +28,7 @@ import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import android.app.ProgressDialog;
 
 
 
@@ -37,6 +38,7 @@ public class first_show_pic_arm extends AppCompatActivity {
     static int visitNext = 0;
     private int round = 0;
     private TextView textureR;
+    ProgressDialog mWaitingDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,9 +62,21 @@ public class first_show_pic_arm extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String toast_count = Integer.toString(visitNext+1);
-                String toast_count2 = "กำลังอัพโหลดรูปที่"+toast_count+"กรุณารอสักครู่";
-                Toast.makeText(getBaseContext(), toast_count2, Toast.LENGTH_LONG).show();
+                Button next = findViewById(R.id.button4);
+                next.setEnabled(false);
+                Button cancle = findViewById(R.id.cn);
+                cancle.setEnabled(false);
+                visitNext++;
+                if(visitNext == 5){
+                    mWaitingDialog = ProgressDialog.show(first_show_pic_arm.this, "ระบบกำลังประมวลผล", "กำลังโหลด...", true);
+                    //mWaitingDialog.dismiss();
+                }
+                else {
+                    String toast_count2 = "กำลังอัพโหลดรูป";
+                    Toast.makeText(getBaseContext(), toast_count2, Toast.LENGTH_SHORT).show();
+                }
+//                String toast_count = Integer.toString(visitNext+1);
+
                 resizeImage();
                 renameSend();
                 up_pic();
@@ -77,7 +91,7 @@ public class first_show_pic_arm extends AppCompatActivity {
     }
 
     public void renameSend(){
-        visitNext++;
+//        visitNext++;
         SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy", Locale.KOREA);
         Date now = new Date();
         String count_st = Integer.toString(visitCount);
@@ -177,7 +191,7 @@ public class first_show_pic_arm extends AppCompatActivity {
     DatabaseHelper2 db2 = new DatabaseHelper2(activity);
     DatabaseHelper db1 = new DatabaseHelper(activity);
     public void process() {
-        Toast.makeText(getBaseContext(), "กำลังประมวลผลกรุณารอสักครู่", Toast.LENGTH_LONG).show();
+        //Toast.makeText(getBaseContext(), "กำลังประมวลผลกรุณารอสักครู่", Toast.LENGTH_LONG).show();
         String url = db1.getNg()+"/pro-android/arm/first_test.php";
         Ion.with(this)
                 .load(url)

@@ -50,7 +50,7 @@
         android:id="@+id/Back2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="หนาจอหลัก"
+        android:text="หน้าจอหลัก"
         app:layout_constraintEnd_toEndOf="@+id/imageView11"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/imageView11"

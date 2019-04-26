@@ -29,11 +29,14 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import android.app.ProgressDialog;
 
 public class first_sound extends AppCompatActivity implements View.OnClickListener{
     private final AppCompatActivity activity = first_sound.this;
     static int visitCount = 0;
     static int visitNext = 0;
+    ProgressDialog mWaitingDialog;
+
 
     public static final int RECORD_AUDIO = 0;
     private MediaRecorder myAudioRecorder;
@@ -88,7 +91,17 @@ public class first_sound extends AppCompatActivity implements View.OnClickListen
                 }
                 break;
             case R.id.button4:
+                visitNext++;
                 up_sound(v);
+                if(visitNext == 5){
+                    mWaitingDialog = ProgressDialog.show(first_sound.this, "ระบบกำลังประมวลผล", "กำลังโหลด...", true);
+                    break;
+                }
+                else {
+                    String toast_count2 = "กำลังอัพโหลดไฟล์เสียง";
+                    Toast.makeText(getBaseContext(), toast_count2, Toast.LENGTH_SHORT).show();
+                }
+
                 break;
             default:
                 break;
@@ -137,7 +150,7 @@ public class first_sound extends AppCompatActivity implements View.OnClickListen
         stop.setEnabled(true);
         play.setEnabled(false);
         next.setEnabled(false);
-        Toast.makeText(getApplicationContext(), "Recording started", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "กำลังบันทึกเสียง", Toast.LENGTH_SHORT).show();
     }
     public void stop(View view){
 //        visitCount++;
@@ -148,7 +161,7 @@ public class first_sound extends AppCompatActivity implements View.OnClickListen
         stop.setEnabled(false);
         play.setEnabled(true);
         start.setEnabled(false);
-        Toast.makeText(getApplicationContext(), "Audio recorded successfully", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "บันทึกเสียงสำเร็จ", Toast.LENGTH_SHORT).show();
     }
     public void play(View view) throws IllegalArgumentException, SecurityException, IllegalStateException, IOException {
 
@@ -159,14 +172,14 @@ public class first_sound extends AppCompatActivity implements View.OnClickListen
             m.prepare();
             m.start();
 
-            Toast.makeText(getApplicationContext(), "Playing Audio", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "กำลังเล่น", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             // make something
         }
 
         start.setEnabled(true);
         next.setEnabled(true);
-        Toast.makeText(getApplicationContext(), "Playing audio", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "กำลังเล่น", Toast.LENGTH_SHORT).show();
     }
     public void up_sound(View view){
         start.setEnabled(false);
@@ -175,8 +188,8 @@ public class first_sound extends AppCompatActivity implements View.OnClickListen
         next.setEnabled(false);
         renameSend();
         String toast_count = Integer.toString(visitNext);
-        String toast_count2 = "กำลังอัพโหลดไฟล์เสียงรอบที่"+toast_count+"กรุณารอสักครู่";
-        Toast.makeText(getBaseContext(), toast_count2, Toast.LENGTH_LONG).show();
+//        String toast_count2 = "กำลังอัพโหลดไฟล์เสียง";
+//        Toast.makeText(getBaseContext(), toast_count2, Toast.LENGTH_LONG).show();
         SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy", Locale.KOREA);
         Date now = new Date();
         String count = Integer.toString(visitNext);
@@ -196,14 +209,14 @@ public class first_sound extends AppCompatActivity implements View.OnClickListen
                         String toast_count = Integer.toString(visitNext);
                         String toast_count2 = "ส่งไฟล์เสียงรอบที่"+toast_count+"สำเร็จ";
                         start.setEnabled(true);
-                        Toast.makeText(getBaseContext(), toast_count2, Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getBaseContext(), toast_count2, Toast.LENGTH_LONG).show();
                         if(visitNext > 4){
                             start.setEnabled(false);
                             stop.setEnabled(false);
                             play.setEnabled(false);
                             next.setEnabled(false);
                             visitNext = 0;
-                            Toast.makeText(getBaseContext(), "รอสักครู่ระบบกำลังประมวลผล", Toast.LENGTH_LONG).show();
+                            //Toast.makeText(getBaseContext(), "รอสักครู่ระบบกำลังประมวลผล", Toast.LENGTH_LONG).show();
                             renameone();
                             process();
                         }
@@ -222,6 +235,7 @@ public class first_sound extends AppCompatActivity implements View.OnClickListen
     DatabaseHelper db1 = new DatabaseHelper(activity);
 
     public void process() {
+//        mWaitingDialog = ProgressDialog.show(first_sound.this, "ระบบกำลังประมวลผล", "กำลังโหลด...", true);
         String url = db1.getNg()+"/pro-android/sound/first_test.php";
         Ion.with(this)
                 .load(url)
@@ -233,12 +247,14 @@ public class first_sound extends AppCompatActivity implements View.OnClickListen
 //                        String sum_st = Double.toString(sum);
 //                        String name = user.getName();
                         db2.updateDistRc(sum, db1.getName());
+//                        mWaitingDialog.dismiss();
                         AlertDialog.Builder dialog = new AlertDialog.Builder(first_sound.this);
                         dialog.setTitle("การบันทักค่า");
                         dialog.setMessage("บันทึกค่าสำเร็จ");
                         dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                mWaitingDialog.dismiss();
                                 Intent intent = new Intent(first_sound.this, UsersActivity.class);
                                 startActivity(intent);
                                 finish();
@@ -247,18 +263,18 @@ public class first_sound extends AppCompatActivity implements View.OnClickListen
                         //dialog.setNegativeButton("Exit",null);
                         dialog.setCancelable(false);
                         dialog.show();
-//                        Intent intent = new Intent(first_sound.this, Main2Activity.class);
-//                        startActivity(intent);
-
+//                        mWaitingDialog.dismiss();
 
                     }
                 });
+        ;
 
 
     }
 
+
     public void renameSend(){
-        visitNext++;
+//        visitNext++;
         SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy", Locale.KOREA);
         Date now = new Date();
         String count_st = Integer.toString(visitCount);

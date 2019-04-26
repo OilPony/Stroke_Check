@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
+import android.app.ProgressDialog;
 
 import com.example.test_php2.R;
 import com.example.test_php2.model.User;
@@ -40,6 +41,7 @@ public class record extends AppCompatActivity implements View.OnClickListener{
     public static final int RECORD_AUDIO = 0;
     private MediaRecorder myAudioRecorder;
     private String output = null;
+    ProgressDialog mWaitingDialog;
     private Button start, stop, play,next;
     private boolean permissionToRecordAccepted = false;
     private boolean permissionToWriteAccepted = false;
@@ -92,6 +94,7 @@ public class record extends AppCompatActivity implements View.OnClickListener{
                 }
                 break;
             case R.id.button4:
+                mWaitingDialog = ProgressDialog.show(record.this, "ระบบกำลังประมวลผล", "กำลังโหลด...", true);
                 up_sound1(v);
                 break;
             default:
@@ -138,7 +141,7 @@ public class record extends AppCompatActivity implements View.OnClickListener{
 
         stop.setEnabled(true);
         next.setEnabled(false);
-        Toast.makeText(getApplicationContext(), "Recording started", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "กำลังบันทึกเสียง", Toast.LENGTH_SHORT).show();
     }
     public void stop(View view){
 
@@ -149,7 +152,7 @@ public class record extends AppCompatActivity implements View.OnClickListener{
         stop.setEnabled(false);
         play.setEnabled(true);
         start.setEnabled(true);
-        Toast.makeText(getApplicationContext(), "Audio recorded successfully", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "บันทึกเสียงสำเร็จ", Toast.LENGTH_SHORT).show();
     }
     public void play(View view) throws IllegalArgumentException, SecurityException, IllegalStateException, IOException {
 
@@ -160,13 +163,13 @@ public class record extends AppCompatActivity implements View.OnClickListener{
             m.prepare();
             m.start();
 
-            Toast.makeText(getApplicationContext(), "Playing Audio", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "กำลังเล่น", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             // make something
         }
 
         next.setEnabled(true);
-        Toast.makeText(getApplicationContext(), "Playing audio", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "กำลังเล่น", Toast.LENGTH_SHORT).show();
     }
 //    public void up_sound(View view){
 //        Toast.makeText(getBaseContext(), "เธญเธฑเธเนเธซเธฅเธ”เนเธเธฅเนเน€เธชเธตเธขเธ", Toast.LENGTH_LONG).show();
@@ -201,7 +204,7 @@ public class record extends AppCompatActivity implements View.OnClickListener{
         stop.setEnabled(false);
         play.setEnabled(false);
         next.setEnabled(false);
-        Toast.makeText(getBaseContext(), "ระบบกำลังประมวลผลกรุณารอสักครู่", Toast.LENGTH_LONG).show();
+        //Toast.makeText(getBaseContext(), "ระบบกำลังประมวลผลกรุณารอสักครู่", Toast.LENGTH_LONG).show();
         SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy", Locale.KOREA);
         Date now = new Date();
         String name = (Environment.getExternalStorageDirectory()+"/"+db1.getName()+".wav");
