@@ -15,6 +15,8 @@ public class first_detail_smile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_detail_smile);
 
+
+
 //        AlertDialog.Builder dialog = new AlertDialog.Builder(first_detail_smile.this);
 //        dialog.setTitle("การสมัครสมาชิก");
 //        dialog.setMessage("สมัครสมาชิกสำเร็จ");

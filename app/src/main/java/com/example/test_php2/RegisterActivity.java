@@ -74,12 +74,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         appCompatTextViewLoginLink = (AppCompatTextView) findViewById(R.id.appCompatTextViewLoginLink);
         sever = (AppCompatTextView) findViewById(R.id.sever2);
-//        if (textInputEditTextPassword != null ){
-//            Intent intent = new Intent(RegisterActivity.this, UsersActivity.class);
-//            startActivity(intent);
-//        }else{
-//
-//        }
     }
 
     private void initListeners(){
@@ -120,7 +114,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 //        if (!inputValidation.isInputEditTextEmail(textInputEditTextName, textInputLayoutEmail, getString(R.string.error_message_email))) {
 //            return;
 //        }
-        if (!inputValidation.isInputEditTextFilled(textInputEditTextName, textInputLayoutPassword, "กรุณาใส่รหัสผ่าน")) {
+        if (!inputValidation.isInputEditTextFilled(textInputEditTextPassword, textInputLayoutPassword, "กรุณาใส่รหัสผ่าน")) {
             return;
         }
 
@@ -140,7 +134,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
             AlertDialog.Builder dialog = new AlertDialog.Builder(RegisterActivity.this);
             dialog.setTitle("สมัครสมาชิก");
-            dialog.setMessage("สมัครสมาชิกสำเร็จ เข้าสู่ขึ้นตอนถัดไป");
+            dialog.setMessage("สมัครสมาชิกสำเร็จ");
             dialog.setPositiveButton("ตกลง", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
@@ -160,7 +154,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         } else {
             // Snack Bar to show error message that record already exists
-            Snackbar.make(nestedScrollView, "กรุณาใส่ชื่อและรหัสผ่าน", Snackbar.LENGTH_LONG).show();
+            Snackbar.make(nestedScrollView, getString(R.string.error_email_exists), Snackbar.LENGTH_LONG).show();
         }
 
 
@@ -193,7 +187,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
 
         } else {
-            Snackbar.make(nestedScrollView, "กรุณาใส่ชื่อและรหัสผ่านให้ถูกต้อง", Snackbar.LENGTH_LONG).show();
+            Snackbar.make(nestedScrollView, getString(R.string.error_valid_email_password), Snackbar.LENGTH_LONG).show();
         }
     }
 
