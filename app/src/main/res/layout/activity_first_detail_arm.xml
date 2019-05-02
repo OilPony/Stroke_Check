@@ -48,12 +48,12 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="234dp"
-        android:layout_height="105dp"
+        android:layout_width="245dp"
+        android:layout_height="235dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text='   " ให้ผู้ใช้ถ่ายภาพขณะยเกร็งแขนในท่าหงายจำนวน 5 รอบ เพื่อบันทึกค่าขณะเกร็งแขน"'
+        android:layout_marginBottom="40dp"
+        android:text='-ให้ผู้ใช้ถ่ายภาพขณะเกร็งแขนในท่าหงามือจำนวน 5 รอบดังภาพตัวอย่าง \n-ผนังที่ใช้ถ่ายรูปต้องไม่มีลวดลาย \n-ผู้ใช้ต้องสวมเสื้อแขนสั้นไม่สวมใส่เครื่องประดับบริเวณมือและแขน \n- ถ่ายรูปแขนให้อยู่บริเวณกรอบที่กำหนด'
         android:textColor="@color/colorText"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/start"

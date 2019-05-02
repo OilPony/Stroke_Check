@@ -13,7 +13,7 @@ public class Risk_record extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_risk_record);
 
-        Button back = findViewById(R.id.Back);
+        Button back = findViewById(R.id.Back2);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
