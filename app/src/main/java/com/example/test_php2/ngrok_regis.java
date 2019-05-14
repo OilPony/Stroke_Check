@@ -18,6 +18,15 @@ public class ngrok_regis extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ngrok_regis);
         call_ng();
+
+        Button back = findViewById(R.id.ngrokstart3);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ngrok_regis.this,RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     DatabaseHelper db1 = new DatabaseHelper(activity);

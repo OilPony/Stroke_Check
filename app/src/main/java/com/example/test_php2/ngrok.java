@@ -25,6 +25,15 @@ public class ngrok extends AppCompatActivity {
 
         call_ng();
 
+        Button back = findViewById(R.id.ngrokstart3);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ngrok.this,UsersActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
 
 //        st.setOnClickListener(new View.OnClickListener() {

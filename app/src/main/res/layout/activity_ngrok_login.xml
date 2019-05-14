@@ -44,6 +44,15 @@
             android:text="ตกลง"
             android:textColor="@color/colorText" />
 
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/ngrokstart3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorTextHint"
+            android:text="ย้อนกลับ"
+            android:textColor="@color/colorText" />
+
 
     </android.support.v7.widget.LinearLayoutCompat>
 </android.support.v4.widget.NestedScrollView>

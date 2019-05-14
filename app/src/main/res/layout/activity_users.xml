@@ -86,7 +86,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Sever"
+        android:text="Server"
         android:textColor="@color/colorText"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/textView"
@@ -98,13 +98,13 @@
 
     <ImageView
         android:id="@+id/imageView10"
-        android:layout_width="22dp"
-        android:layout_height="20dp"
+        android:layout_width="43dp"
+        android:layout_height="40dp"
         app:layout_constraintBottom_toBottomOf="@+id/textView5"
         app:layout_constraintEnd_toStartOf="@+id/textView5"
         app:layout_constraintTop_toTopOf="@+id/textView5"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/warn" />
+        app:srcCompat="@drawable/question" />
 
 
 </android.support.constraint.ConstraintLayout>

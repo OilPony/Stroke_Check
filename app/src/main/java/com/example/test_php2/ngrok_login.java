@@ -19,6 +19,14 @@ public class ngrok_login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ngrok_login);
         call_ng();
+        Button back = findViewById(R.id.ngrokstart3);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ngrok_login.this,Main2Activity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     DatabaseHelper db1 = new DatabaseHelper(activity);
